@@ -12,3 +12,4 @@ include $HOME/.config/sway/config.d/*
 # xwayland disable
 
 output * bg $HOME/.config/sway/sway.jpg stretch
+
