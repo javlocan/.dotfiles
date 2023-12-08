@@ -1,0 +1,38 @@
+env:
+  TERM: xterm-256color
+window:
+  opacity: 0.97
+  padding:
+    x: 10
+    y: 4
+  dynamic_padding: true
+  startup_mode: Maximized
+scrolling:
+  history: 10000
+  multiplier: 3
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+    style: Regular
+  bold:
+    family: JetBrainsMono Nerd Font
+    style: Bold
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Italic
+  bold-italic:
+    family: JetBrainsMono Nerd Font
+    style: Bold Italic
+  size: 14
+  offset:
+    x: 0
+    y: -1
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
+shell:
+  program:
+    /bin/zsh
+    #args:
+    #- -l
+    #- -c
+    #- "tmux attach || tmux"
