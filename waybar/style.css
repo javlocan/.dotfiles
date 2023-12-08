@@ -5,8 +5,8 @@
 }
 
 @define-color background #1d2021;
-@define-color primary #e9b143;
-@define-color secondary #473c29;
+@define-color primary #544d77;
+@define-color secondary #393456;
 @define-color neutral #e2cca9;
 
 window#waybar {
@@ -87,12 +87,12 @@ window#waybar.hidden {
 
 #battery.charging {
   color: @neutral;
-  background-color: #0bda51;
+  background-color: #333e34;
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  background-color: #3c1f1e;
+  color: @neutral;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
