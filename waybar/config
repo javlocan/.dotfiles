@@ -14,7 +14,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces","custom/keyboard-layout", "sway/mode", "custom/media"],
     "modules-center": ["clock"],
-    "modules-right": ["network", "cpu", "memory", "pulseaudio", "battery", "tray"],
+    "modules-right": ["network", "cpu", "memory", "pulseaudio", "backlight", "battery", "tray"],
 
     // Modules configuration
      "sway/workspaces": {
@@ -33,6 +33,13 @@
     //         "default": ""
          }
      },
+
+    "backlight":{
+        "format-icons": [""],
+        "format": "{icon} {percent}%",
+         "on-scroll-down": "brightnessctl -c backlight set 1%-",
+         "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
 
     "custom/keyboard-layout": {
         "exec": "~/.config/waybar/scripts/keyboard-layout.sh",

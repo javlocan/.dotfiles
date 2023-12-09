@@ -68,9 +68,6 @@ window#waybar.hidden {
   padding: 0 10px;
   color: #ffffff;
 }
-#modules-right {
-  border: 2px solid @secondary-light;
-}
 
 #mode {
   color: @background;
@@ -173,6 +170,17 @@ label:focus {
   color: @neutral-light;
   border-top: 2px solid @secondary-dark;
   border-bottom: 2px solid @secondary-dark;
+}
+
+#backlight {
+  background-color: @background;
+  color: @neutral-light;
+  border-top: 2px solid @secondary-dark;
+  border-bottom: 2px solid @secondary-dark;
+}
+
+#backlight {
+  padding-right: 10px;
 }
 
 #custom-media {
