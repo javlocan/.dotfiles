@@ -5,9 +5,12 @@
 }
 
 @define-color background #1d2021;
-@define-color primary #544d77;
-@define-color secondary #393456;
-@define-color neutral #e2cca9;
+@define-color primary-light #e9b143;
+@define-color primary-dark #473c29;
+@define-color secondary-light #80aa9e;
+@define-color secondary-dark #2e3b3b;
+@define-color neutral-light #e2cca9;
+@define-color neutral-dark #3c3836;
 
 window#waybar {
   background-color: rgba(43, 48, 59, 0);
@@ -21,7 +24,7 @@ window#waybar.hidden {
 
 #workspaces {
   background-color: @background;
-  border: 2px solid @secondary;
+  border: 2px solid @primary-dark;
   border-radius: 10px;
 }
 
@@ -29,6 +32,8 @@ window#waybar.hidden {
   padding: 0 5px;
   background-color: transparent;
   color: #8a8a8a;
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }
 
 #workspaces button:hover {
@@ -37,11 +42,14 @@ window#waybar.hidden {
 
 #workspaces button.focused {
   color: #ffffff;
+  background-color: shade (@background, 1.5);
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }
 
 #workspaces button.urgent {
-  background-color: @secondary;
-  color: @neutral;
+  background-color: @primary-dark;
+  color: @neutral-light;
 }
 
 #mode {
@@ -68,31 +76,31 @@ window#waybar.hidden {
 #clock {
   border-radius: 10px;
   background-color: @background;
-  color: @neutral;
+  color: @neutral-light;
 }
 
 #custom-keyboard-layout {
   margin-left: 10px;
-  background-color: @secondary;
+  background-color: alpha (@primary-dark, 0.8);
   border-radius: 10px;
-  border: 2px solid @background;
-  color: @neutral;
+  border: 2px solid @secondary-dark;
+  color: @neutral-light;
 }
 
 #battery {
-  background-color: @secondary;
+  background-color: @primary-dark;
   border-radius: 0 10px 10px 0;
-  color: @neutral;
+  color: @neutral-light;
 }
 
 #battery.charging {
-  color: @neutral;
+  color: @neutral-light;
   background-color: #333e34;
 }
 
 #battery.critical:not(.charging) {
   background-color: #3c1f1e;
-  color: @neutral;
+  color: @neutral-light;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -103,28 +111,28 @@ window#waybar.hidden {
 @keyframes blink {
   to {
     background-color: #ffffff;
-    color: @neutral;
+    color: @neutral-light;
   }
 }
 
 label:focus {
-  background-color: @neutral;
+  background-color: @neutral-light;
 }
 
 #cpu {
   background-color: @background;
-  color: @neutral;
+  color: @neutral-light;
 }
 
 #memory {
   background-color: @background;
-  color: @neutral;
+  color: @neutral-light;
 }
 
 #network {
   background-color: @background;
   border-radius: 10px 0 0 10px;
-  color: @neutral;
+  color: @neutral-light;
 }
 
 #network.disconnected {
@@ -133,7 +141,7 @@ label:focus {
 
 #pulseaudio {
   background-color: @background;
-  color: @neutral;
+  color: @neutral-light;
 }
 
 #custom-media {

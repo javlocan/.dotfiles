@@ -21,8 +21,10 @@ exec swaybg -i ~/.config/sway/sway.jpg
 for_window [shell="xdg_shell"] title_format "%title (%app_id)"
 for_window [shell="x_wayland"] title_format "%class - %title"
 
+set $focused #7c6f64
+
 # class                 border  bground text    indicator child_border
-client.focused          #48426b #48426b #F8F8F2 #48426b   #48426b
+client.focused          $focused $focused #F8F8F2 $focused   $focused
 # client.focused          #387f86 #387f86 #387f86 #387f86   #387f86
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
