@@ -36,7 +36,7 @@
 
     "backlight":{
         "format-icons": [""],
-        "format": "{icon} {percent}%",
+        "format": " {icon} {percent}% ",
          "on-scroll-down": "brightnessctl -c backlight set 1%-",
          "on-scroll-up": "brightnessctl -c backlight set +1%"
     },
@@ -59,7 +59,7 @@
     },
     
     "network": {
-        "format-wifi": "󰖩  {essid} ({signalStrength}%)",
+        "format-wifi": " 󰖩  {essid} ({signalStrength}%)",
         "format-ethernet": "󰈁 {ifname} {bandwidthUpBits} {bandwidthDownBits}",
         "format-linked": " (No IP) ",
         "format-disconnected": "󰖪",
@@ -77,7 +77,7 @@
     },
     
         "pulseaudio": {
-            "format": "{icon} {volume}%",
+            "format": " {icon}  {volume}% ",
             "format-bluetooth": "{volume}% {icon} {format_source}",
             "format-bluetooth-muted": "ﱝ {icon} {format_source}",
             "format-muted": "ﱝ",
@@ -90,7 +90,7 @@
                 "phone": "",
                 "portable": "",
                 "car": "",
-                "default": ["", "", ""]
+                "default": [ "", "",""]
             },
             "on-click": "pavucontrol"
         },
@@ -101,9 +101,9 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": " {capacity}% {icon} ",
         "format-charging": "{capacity}% 󰂅",
-        "format-icons": ["󰁹", "󰂂", "󰂁", "󰂀", "󰁿", "󰁾", "󰁽", "󰁼", "󰁻", "󰁺"],
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁" , "󰂂","󰁹"],
         "tooltip-format": "{time}"
     },
     
