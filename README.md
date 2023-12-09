@@ -8,6 +8,5 @@ For that, you can check the docs of every piece of software, or you can look int
 
 ### TODO
 
-- More soon, this is just first commit.
-- Better README.md
 - Link repository
+- WOFI
