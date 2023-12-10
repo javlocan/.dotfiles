@@ -1,7 +1,7 @@
 return {
   "nvimtools/none-ls.nvim", -- configure formatters & linters
   lazy = true,
-  -- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
+  event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
   dependencies = {
     "jay-babu/mason-null-ls.nvim",
   },
@@ -16,8 +16,6 @@ return {
       ensure_installed = {
         "prettier", -- prettier formatter
         "stylua", -- lua formatter
-        -- "black", -- python formatter
-        -- "pylint", -- python linter
         "eslint_d", -- js linter
       },
     })
@@ -42,6 +40,7 @@ return {
         }), -- js/ts formatter
         formatting.stylua, -- lua formatter
         -- formatting.isort,
+        formatting.rustfmt,
         -- formatting.black,
         -- diagnostics.pylint,
         diagnostics.eslint_d.with({ -- js/ts linter

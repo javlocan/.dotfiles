@@ -16,17 +16,17 @@ font:
     style: Regular
   bold:
     family: JetBrainsMono Nerd Font
-    style: Bold
+    style: ExtraBold
   italic:
     family: JetBrainsMono Nerd Font
     style: Italic
   bold-italic:
     family: JetBrainsMono Nerd Font
-    style: Bold Italic
+    style: ExtraBold Italic
   size: 14
   offset:
     x: 0
-    y: -1
+    y: -2
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
 shell:

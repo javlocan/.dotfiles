@@ -10,6 +10,7 @@
     "position": "top", 
     "height": 30, 
     "margin": "12 12 0 12",
+    // "layer": "bottom",
 
     // Choose the order of the modules
     "modules-left": ["sway/workspaces","custom/keyboard-layout", "sway/mode", "custom/media"],
