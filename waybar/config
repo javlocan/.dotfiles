@@ -61,7 +61,7 @@
     
     "network": {
         "format-wifi": " 󰖩  {essid} ({signalStrength}%)",
-        "format-ethernet": "󰈁 {ifname} {bandwidthUpBits} {bandwidthDownBits}",
+        "format-ethernet": "󰈁 {ifname}   {bandwidthUpBits}   {bandwidthDownBits}",
         "format-linked": " (No IP) ",
         "format-disconnected": "󰖪",
         "interval": 1

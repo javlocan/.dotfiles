@@ -167,10 +167,11 @@ label:focus {
 }
 
 #pulseaudio {
-  background-color: @background;
+  /* background-color: @background; */
+  background: transparent;
   color: @neutral-light;
-  border-top: 2px solid @secondary-dark;
-  border-bottom: 2px solid @secondary-dark;
+  /* border-top: 2px solid @secondary-dark; */
+  /* border-bottom: 2px solid @secondary-dark; */
 }
 
 #backlight {
@@ -226,4 +227,12 @@ label:focus {
 
 #mpd.paused {
   background-color: #51a37a;
+}
+
+window#waybar .modules-right > *:nth-last-child(2) {
+  background: @background;
+  border-right: 2px solid @neutral-dark;
+  border-top: 2px solid @neutral-dark;
+  border-bottom: 2px solid @neutral-dark;
+  border-radius: 0 10px 10px 0;
 }
