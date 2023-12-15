@@ -63,6 +63,7 @@ alias gau="git add -u"
 alias gcm="git commit -m"
 alias gco="git checkout"
 alias gpsuo="git push --set-upstream origin"
+alias k="kubectl"
 
 # prompt
 eval "$(starship init zsh)"

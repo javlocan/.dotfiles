@@ -23,7 +23,7 @@ font:
   bold-italic:
     family: JetBrainsMono Nerd Font
     style: ExtraBold Italic
-  size: 14
+  size: 13
   offset:
     x: 0
     y: -2

@@ -1,0 +1,19 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.opt.laststatus = 3
+vim.opt.scrolloff = 2
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'machakann/vim-highlightedyank'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'kana/vim-textobj-entire'
+
+set nu
+set relativenumber
+" set surround
+" set ideajoin
+" set commentary
+" set highlightedyank
+" set ReplaceWithRegister
