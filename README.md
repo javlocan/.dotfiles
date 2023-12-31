@@ -8,5 +8,9 @@ For that, you can check the docs of every piece of software, or you can look int
 
 ### TODO
 
-- Link repository
-- WOFI
+- Urgent! Link to gtk theme
+
+- Notification manager
+- WOFI and else
+- EWW
+
