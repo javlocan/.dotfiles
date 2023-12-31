@@ -167,11 +167,10 @@ label:focus {
 }
 
 #pulseaudio {
-  /* background-color: @background; */
-  background: transparent;
+  background-color: @background;
   color: @neutral-light;
-  /* border-top: 2px solid @secondary-dark; */
-  /* border-bottom: 2px solid @secondary-dark; */
+  border-top: 2px solid @secondary-dark;
+  border-bottom: 2px solid @secondary-dark;
 }
 
 #backlight {
