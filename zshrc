@@ -64,6 +64,6 @@ alias gcm="git commit -m"
 alias gco="git checkout"
 alias gpsuo="git push --set-upstream origin"
 alias k="kubectl"
-
+alias waybarreload="killall waybar && waybar -l=off & disown"
 # prompt
 eval "$(starship init zsh)"

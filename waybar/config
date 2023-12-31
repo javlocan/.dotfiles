@@ -7,9 +7,9 @@
 // https://github.com/Jorgedeveloopzz                     
 
 {
-    "position": "top", 
+    "position": "bottom", 
     "height": 30, 
-    "margin": "10 10 0 10",
+    "margin": "00 10 10 10",
     // "layer": "bottom",
 
     // Choose the order of the modules
