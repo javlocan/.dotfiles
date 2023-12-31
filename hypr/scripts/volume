@@ -2,12 +2,14 @@
 
 CURRENT=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -e '%' | sed 's/ //g' | cut -d "/" -f 2 | sed 's/%//')
 
+max_vol=140
+
 up() {
   new=$(($CURRENT+5))
-  if [ $new -lt 100 ]; then
+  if [ $new -lt $max_vol ]; then
     pactl set-sink-volume @DEFAULT_SINK@ $new%
   else
-    pactl set-sink-volume @DEFAULT_SINK@ 100%
+    pactl set-sink-volume @DEFAULT_SINK@ $max_vol%
   fi
 }
 
