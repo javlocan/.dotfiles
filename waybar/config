@@ -9,16 +9,16 @@
 {
     "position": "top", 
     "height": 30, 
-    "margin": "12 12 0 12",
+    "margin": "10 10 0 10",
     // "layer": "bottom",
 
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces","custom/keyboard-layout", "sway/mode", "custom/media"],
-    "modules-center": ["clock"],
+    "modules-left": ["clock","custom/keyboard-layout", "hyprland/mode", "custom/media"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-right": ["network", "cpu", "memory", "pulseaudio", "backlight", "battery", "tray"],
 
     // Modules configuration
-     "sway/workspaces": {
+     "hyprland/workspaces": {
          "disable-scroll": true,
          "format":"{icon}",
          "format-icons": {

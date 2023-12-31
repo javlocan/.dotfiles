@@ -42,7 +42,7 @@ window#waybar.hidden {
   box-shadow: inherit;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
   color: @neutral-light;
   background-color: shade (@background, 1.5);
   transition-property: background-color;
