@@ -1,12 +1,13 @@
 # My dotfiles repo
 
 ### TODO
-[] Link to gtk theme
 ---------------
-[] I think I need a clipboard
-[x] Notification manager
-[] WOFI
-[] EWW
+() Link to gtk theme
+
+() I think I need a clipboard
+(x) Notification manager
+() WOFI
+() EWW
 
 ## List of elements of DE
 * GKT-First for shared colors
