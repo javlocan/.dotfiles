@@ -9,12 +9,12 @@ EWW
 WOFI
 
 ### TODO
-- [] Link to gtk theme
+- [ ] Link to gtk theme
 
-- [] I think I need a clipboard
+- [ ] I think I need a clipboard
 - [x] Notification manager
-- [] WOFI
-- [] EWW
+- [ ] WOFI
+- [ ] EWW
 
 ## List of elements of DE
 * GKT-First for shared colors
