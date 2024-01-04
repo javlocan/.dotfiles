@@ -22,10 +22,12 @@ down() {
   fi
 }
 
-
+bell() {
+  gst123 -q "/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+}
 
 if [[ "$1" == "--up" ]];then
-  up
+  up & bell
 elif [[ "$1" == "--down" ]];then
-  down
+  down & bell
 fi
