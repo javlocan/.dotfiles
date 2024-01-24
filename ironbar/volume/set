@@ -1,0 +1,33 @@
+#!/bin/sh
+
+CURRENT=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -e '%' | sed 's/ //g' | cut -d "/" -f 2 | sed 's/%//')
+
+max_vol=140
+
+up() {
+  new=$(($CURRENT+5))
+  if [ $new -lt $max_vol ]; then
+    pactl set-sink-volume @DEFAULT_SINK@ $new%
+  else
+    pactl set-sink-volume @DEFAULT_SINK@ $max_vol%
+  fi
+}
+
+down() {
+  new=$(($CURRENT-5))
+  if [ $new -gt 0 ]; then
+    pactl set-sink-volume @DEFAULT_SINK@ $new%
+  else
+    pactl set-sink-volume @DEFAULT_SINK@ 0%
+  fi
+}
+
+bell() {
+  gst123 -q "/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+}
+
+if [[ "$1" == "--up" ]];then
+  up & bell
+elif [[ "$1" == "--down" ]];then
+  down & bell
+fi

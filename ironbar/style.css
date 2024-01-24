@@ -1,0 +1,235 @@
+@import url("colors.css");
+
+@define-color color_bg @insensitive_base_color;
+@define-color color_bg_dark @theme_bg_color;
+@define-color color_border @BLACK_700;
+@define-color color_border_active @LIME_700;
+@define-color color_text @theme_fg_color;
+@define-color color_urgent @error_color;
+
+/* -- base styles -- */
+
+* {
+  all: unset;
+  font-family:
+    Noto Sans Nerd Font,
+    sans-serif;
+  font-size: 14px;
+}
+
+.background {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  background: transparent;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  /* padding-bottom: 0.25rem; */
+}
+#volume {
+  font-size: 20px;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+box,
+menubar,
+button {
+  background-image: none;
+}
+
+button {
+  min-width: 2rem;
+  border-radius: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+button:hover {
+  background-color: @color_bg_dark;
+}
+
+.popup {
+  background: @color_bg;
+  border: 1px solid @color_border;
+  padding: 1em;
+}
+
+/* -- clipboard -- */
+
+.clipboard {
+  margin-left: 5px;
+  font-size: 1.1em;
+}
+
+.popup-clipboard .item {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid @color_border;
+}
+
+/* -- clock -- */
+
+.clock {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.popup-clock .calendar-clock {
+  color: @color_text;
+  font-size: 2.5em;
+  padding-bottom: 0.1em;
+}
+
+.popup-clock .calendar {
+  background-color: @color_bg;
+  color: @color_text;
+}
+
+.popup-clock .calendar .header {
+  padding-top: 1em;
+  border-top: 1px solid @color_border;
+  font-size: 1.5em;
+}
+
+.popup-clock .calendar:selected {
+  background-color: @color_border_active;
+}
+
+/* -- launcher -- */
+
+.launcher .item {
+  margin-right: 4px;
+}
+
+.launcher .item:not(.focused):hover {
+  background-color: @color_bg_dark;
+}
+
+.launcher .open {
+  border-bottom: 1px solid @color_text;
+}
+
+.launcher .focused {
+  border-bottom: 2px solid @color_border_active;
+}
+
+.launcher .urgent {
+  border-bottom-color: @color_urgent;
+}
+
+.popup-launcher {
+  padding: 0;
+}
+
+.popup-launcher .popup-item:not(:first-child) {
+  border-top: 1px solid @color_border;
+}
+
+/* -- music -- */
+
+.music:hover * {
+  background-color: @color_bg_dark;
+}
+
+.popup-music .album-art {
+  margin-right: 1em;
+}
+
+.popup-music .icon-box {
+  margin-right: 0.4em;
+}
+
+.popup-music .title .icon,
+.popup-music .title .label {
+  font-size: 1.7em;
+}
+
+.popup-music .controls *:disabled {
+  color: @color_border;
+}
+
+.popup-music .volume .slider slider {
+  border-radius: 100%;
+}
+
+.popup-music .volume .icon {
+  margin-left: 4px;
+}
+
+.popup-music .progress .slider slider {
+  border-radius: 100%;
+}
+
+/* -- script -- */
+
+.script {
+  padding-left: 10px;
+}
+
+/* -- sys_info -- */
+
+.sysinfo {
+  margin-left: 10px;
+}
+
+.sysinfo .item {
+  margin-left: 5px;
+}
+
+/* -- tray -- */
+
+.tray {
+  margin-left: 10px;
+}
+
+/* -- workspaces -- */
+
+.workspaces {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border: 2px solid @color_border;
+  border-radius: 1rem;
+  background: @color_bg_dark;
+  color: @color_text;
+}
+
+.workspaces .item {
+  padding: 0;
+  min-width: 2rem;
+  min-height: 2rem;
+  /* margin-right: 0.25rem; */
+  /* margin-left: 0.25rem; */
+  border-radius: 1rem;
+}
+
+.workspaces .item.inactive {
+  color: @SLATE_300;
+  background-color: @color_bg_dark;
+}
+
+.workspaces .item.focused {
+  background-color: @color_border;
+}
+
+.workspaces .item:hover {
+  background-color: black;
+}
+
+/* -- custom: power menu -- */
+
+.popup-power-menu #header {
+  font-size: 1.4em;
+  padding-bottom: 0.4em;
+  margin-bottom: 0.6em;
+  border-bottom: 1px solid @color_border;
+}
+
+.popup-power-menu .power-btn {
+  border: 1px solid @color_border;
+  padding: 0.6em 1em;
+}
+
+.popup-power-menu #buttons > *:nth-child(1) .power-btn {
+  margin-right: 1em;
+}

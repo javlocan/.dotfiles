@@ -58,12 +58,14 @@ source "/usr/share/fzf/key-bindings.zsh"
 # aliases
 alias vim="nvim"
 alias gss="git status"
-alias ga.="git add ."
+alias ga.="git add . && git status"
 alias gau="git add -u"
 alias gcm="git commit -m"
 alias gco="git checkout"
+alias gpl="git pull"
+alias gpr="git pull --rebase"
+alias gprc="git rebase --continue"
 alias gpsuo="git push --set-upstream origin"
-alias k="kubectl"
-alias waybarreload="killall waybar && waybar -l=off & disown"
+
 # prompt
 eval "$(starship init zsh)"

@@ -8,10 +8,13 @@
 )
 
 (defwidget rightbox []
-  (box :class "rightbox" :orientation "h" :space-evenly false :halign "end"
-    (metric :label "vol"
-            :value volume
-            :onchange "amixer -D pulse sset Master {}%")
+  (box :class "rightbox" :orientation "h" :space-evenly false :spacing 5 :halign "end"
+    ;; (metric :label "vol"
+    ;;         :value volume
+    ;;         :onchange "amixer -D pulse sset Master {}%")
+    (controller :label "vol"
+                :value "ada"
+    )
     (metric :label "ram"
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
@@ -20,21 +23,34 @@
             :onchange "")
     time))
 
+
+;; ------------------------------------------------------------
+;; -----------------------[ WORKSPACES ]-----------------------
+;; ------------------------------------------------------------
+
+(defvar workspace_list "[1,2,3,4,5,6,7,8,9,10]")
+
 (defwidget workspaces []
   (box :class "workspaces"
        :orientation "h"
        :space-evenly true
-       :spacing 4
-    (button :onclick "hyprctl dispatch workspace 1" 1)
-    (button :onclick "hyprctl dispatch workspace 2" 2)
-    (button :onclick "hyprctl dispatch workspace 3" 3)
-    (button :onclick "hyprctl dispatch workspace 4" 4)
-    (button :onclick "hyprctl dispatch workspace 5" 5)
-    (button :onclick "hyprctl dispatch workspace 6" 6)
-    (button :onclick "hyprctl dispatch workspace 7" 7)
-    (button :onclick "hyprctl dispatch workspace 8" 8)
-    (button :onclick "hyprctl dispatch workspace 9" 9)
-    (button :onclick "hyprctl dispatch workspace 10" 0)))
+       :spacing 5
+
+       (for num in workspace_list
+           (wrkspc :num num)
+       )
+  )
+)
+
+(defwidget wrkspc [num]
+  (button :onclick `hyprctl dispatch workspace ${num}`
+    {num}
+  )
+)
+
+(defwidget xkb_layout []
+  (button :class "xkb_layout")
+)
 
 (defwidget music []
   (box :class "music"
@@ -43,6 +59,23 @@
        :halign "start"
     {music != "" ? "🎵  ${music}" : ""}))
 
+(defwidget controller [label value ?onclick ?onrightclick ?onmiddleclick]
+; quiero tener un simbolo de volumen que haga cosas diferentes
+  ; 1. que cambie el icono con el porcentaje de volumen
+  ; 2. que al hacer click derecho abra un slider
+  ; 3. que al hacer click izquierdo se mutee
+  (button :class "controller"
+          :onclick onclick
+          :onrightclick onrightclick
+          :onmiddleclick onmiddleclick
+          :active true
+          :tooltip label
+  {label}
+  )
+)
+
+(deflisten volume :initial "..."
+`pactl get-sink-volume @DEFAULT_SINK@ | grep -e '%' | sed 's/ //g' | cut -d "/" -f 2 | sed 's/%//'`)
 
 (defwidget metric [label value onchange]
   (box :orientation "h"
@@ -60,8 +93,8 @@
 (deflisten music :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
-(defpoll volume :interval "1s"
-  "volume/get")
+;; (defpoll volume :interval "1s"
+;;   "volume/get")
 
 (defpoll time :interval "10s"
   "date '+%H:%M %b %d, %Y'")

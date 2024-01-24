@@ -14,14 +14,9 @@ return {
 
     mason_null_ls.setup({
       ensure_installed = {
-        "prettierd", -- prettier formatter
+        "prettier", -- prettier formatter
         "stylua", -- lua formatter
         "eslint_d", -- js linter
-        "beautysh",
-        "ktlint",
-        "shfmt",
-        "shellcheck",
-        "rustfmt",
       },
     })
 
@@ -44,9 +39,11 @@ return {
           extra_filetypes = { "svelte" },
         }), -- js/ts formatter
         formatting.stylua, -- lua formatter
+        -- formatting.isort,
         formatting.rustfmt,
+        -- formatting.black,
+        -- diagnostics.pylint,
         diagnostics.eslint_d.with({ -- js/ts linter
-
           condition = function(utils)
             return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
           end,
