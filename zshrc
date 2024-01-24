@@ -65,6 +65,7 @@ alias gco="git checkout"
 alias gpl="git pull"
 alias gpr="git pull --rebase"
 alias gprc="git rebase --continue"
+alias gps="git push"
 alias gpsuo="git push --set-upstream origin"
 
 # prompt
