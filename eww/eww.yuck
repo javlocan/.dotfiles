@@ -43,9 +43,13 @@
 ;; ------------------------------------------------------------
 
 (defvar  workspace_list      "[1,2,3,4,5,6,7,8,9,10]")
-(defpoll active_workspaces 
-  :interval "1s"      
+(defpoll using_workspaces 
+  :interval "0.5s"      
   `hyprctl workspaces | grep -Po "(?<=workspace ID) \\d+"| tr '\\n' ' '`
+)
+(defpoll monitors
+:interval "0.5s"
+  `hyprctl monitors -j | jq '[.[] | {id: .id,name: .name, active_workspace: .activeWorkspace.id }]'`
 )
 
 (defwidget workspaces []
@@ -62,7 +66,9 @@
 
 (defwidget wrkspc [num]
   (button :onclick `hyprctl dispatch workspace ${num}`
-          :class { active_workspaces =~ num ? "active" : ""}
+          :class { using_workspaces =~ num ? "using" : "" }
+          :style {monitors[0].active_workspace == num ? "background:pink; color:black" : 
+                  monitors[1].active_workspace == num ? "background:yellow; color:black" : " " }
     {num}
   )
 )
