@@ -10,11 +10,22 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
-.rightbox {
+.left_box {
   font-size: 12pt;
 }
 
-.rightbox > * {
+.left_box > * {
+  // margin-right: 0.5rem;
+  // margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.right_box {
+  font-size: 12pt;
+}
+
+.right_box > * {
   // margin-right: 0.5rem;
   // margin-left: 0.5rem;
   padding-left: 0.5rem;
@@ -62,9 +73,4 @@
 
 .workspaces button:hover {
   background-color: #d35d6e;
-}
-
-.label_ram {
-  color: red;
-  background: red;
 }

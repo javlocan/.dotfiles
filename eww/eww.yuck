@@ -1,27 +1,34 @@
 (defwidget bar []
   (centerbox :orientation "horizontal"
              :class "bar"
-    (music)
+    (left_box)
     (workspaces)
-    (rightbox)
+    (right_box)
   )
 )
 
-(defwidget rightbox []
-  (box :class "rightbox" :orientation "h" :space-evenly false :spacing 5 :halign "end"
+(defwidget left_box []
+
+  (box :class "left_box" :orientation "h" :space-evenly false :spacing 5 :halign "start"
+    time
+    music
+  ))
+
+
+(defwidget right_box []
+  (box :class "right_box" :orientation "h" :space-evenly false :spacing 5 :halign "end"
     ;; (metric :label "vol"
     ;;         :value volume
     ;;         :onchange "amixer -D pulse sset Master {}%")
     (controller :label "vol"
-                :value "ada"
-    )
+                :value "ada")
     (metric :label "ram"
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
     (metric :label "disk"
             :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
             :onchange "")
-    time))
+))
 
 
 ;; ------------------------------------------------------------
@@ -48,16 +55,17 @@
   )
 )
 
+;; ------------------------------------------------------------
+;; ------------------------[ KEYBOARD ]------------------------
+;; ------------------------------------------------------------
+
 (defwidget xkb_layout []
   (button :class "xkb_layout")
 )
 
-(defwidget music []
-  (box :class "music"
-       :orientation "h"
-       :space-evenly false
-       :halign "start"
-    {music != "" ? "🎵  ${music}" : ""}))
+;; ------------------------------------------------------------
+;; ----------------------[ CONTROLLERS ]-----------------------
+;; ------------------------------------------------------------
 
 (defwidget controller [label value ?onclick ?onrightclick ?onmiddleclick]
 ; quiero tener un simbolo de volumen que haga cosas diferentes
@@ -76,6 +84,13 @@
 
 (deflisten volume :initial "..."
 `pactl get-sink-volume @DEFAULT_SINK@ | grep -e '%' | sed 's/ //g' | cut -d "/" -f 2 | sed 's/%//'`)
+
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+    {music != "" ? "🎵  ${music}" : ""}))
 
 (defwidget metric [label value onchange]
   (box :orientation "h"
