@@ -64,12 +64,16 @@
   min-height: 20px;
   border-radius: 4px;
   background: $insensitive_base_color;
-  transition: background-color 300ms;
+  transition: all 300ms;
+  opacity: 0.5;
 }
 
 // .workspaces button .active {
 //   background: $purple;
 // }
+.workspaces button.active {
+  opacity: 1;
+}
 
 .workspaces button:hover {
   background-color: #d35d6e;
