@@ -57,6 +57,7 @@ source "/usr/share/fzf/key-bindings.zsh"
 
 # aliases
 alias vim="nvim"
+alias k="kubectl"
 alias gss="git status"
 alias ga.="git add . && git status"
 alias gau="git add -u"
