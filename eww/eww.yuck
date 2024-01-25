@@ -2,9 +2,6 @@
 ;; -----------------------[ BAR WIDGETS ]----------------------
 ;; ------------------------------------------------------------
 
-;; To get the workspaces
-;; hyprctl workspaces | grep -Po "(?<=workspace ID )\d+"  
-
 (defwidget bar []
   (centerbox :orientation "horizontal"
              :class "bar"
@@ -17,7 +14,7 @@
 (defwidget left_box []
 
   (box :class "left_box" :orientation "h" :space-evenly false :spacing 5 :halign "start"
-    time
+    (time)
     music
   ))
 
@@ -28,7 +25,7 @@
     ;;         :value volume
     ;;         :onchange "amixer -D pulse sset Master {}%")
     (controller :label "vol"
-                :value "ada")
+                :value volume)
     (metric :label "ram"
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
@@ -98,12 +95,12 @@
           :onmiddleclick onmiddleclick
           :active true
           :tooltip label
-  {label}
+    `${label}: ${value}`
   )
 )
 
-(deflisten volume :initial "..."
-`pactl get-sink-volume @DEFAULT_SINK@ | grep -e '%' | sed 's/ //g' | cut -d "/" -f 2 | sed 's/%//'`)
+(defpoll volume :interval "1s"
+  "./volume/get")
 
 (defwidget music []
   (box :class "music"
@@ -131,10 +128,13 @@
 ;; (defpoll volume :interval "1s"
 ;;   "volume/get")
 
+(defwidget time []
+  (label :class "time" :text time)
+)
 (defpoll time :interval "10s"
   "date '+%H:%M %b %d, %Y'")
 
-(defwindow bar
+(defwindow bar 
   :monitor 1
   :exclusive true
   :stacking "fg"

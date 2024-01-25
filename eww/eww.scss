@@ -2,32 +2,29 @@
 
 * {
   all: unset; //Unsets everything so you can style everything from scratch
+  font-size: 12px;
 }
 
 .bar {
   border-radius: 0px;
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
   background: rgba(0, 0, 0, 0.2);
 }
 
 .left_box {
-  font-size: 12pt;
+  font-size: 14px;
 }
 
 .left_box > * {
-  // margin-right: 0.5rem;
-  // margin-left: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 
 .right_box {
-  font-size: 12pt;
+  font-size: 14px;
 }
 
 .right_box > * {
-  // margin-right: 0.5rem;
-  // margin-left: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
@@ -38,7 +35,18 @@
 }
 
 .controller {
-  background: red;
+  border-radius: 0.75rem;
+  background: rgba(100, 100, 100, 0.5);
+}
+
+.time {
+  border-radius: 0.75rem;
+  background: rgba(100, 100, 100, 0.5);
+}
+
+.metric {
+  border-radius: 0.75rem;
+  background: rgba(100, 100, 100, 0.5);
 }
 
 .metric scale trough {
@@ -48,7 +56,7 @@
   min-height: 3px;
   min-width: 50px;
   margin-left: 10px;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 .metric scale trough highlight {
