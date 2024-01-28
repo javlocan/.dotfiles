@@ -2,6 +2,7 @@
 
 ## IN PROGRESS
 
+- STOW everything in dotfiles and make install script that reads all directories and stows em, and with an -i --interactive flag
 - eww: bar - controllers
 - !! UNIFY COMMON SCRIPTS
 

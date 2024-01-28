@@ -54,8 +54,8 @@
 (defwidget wrkspc [num]
   (button :onclick `hyprctl dispatch workspace ${num}`
           :class { workspaces =~ num ? "using" : "" }
-          :style { monitors[0].active_workspace == num ? "background:pink; color:black" : 
-                   monitors[1].active_workspace == num ? "background:yellow; color:black" : " " }
+          :style { monitors[0].active_workspace == num ? "background:pink; color:black" : " "}
+                   ;;monitors[1].active_workspace == num ? "background:yellow; color:black" : " " }
           {num}
   )
 )
@@ -135,7 +135,7 @@
   "date '+%H:%M %b %d, %Y'")
 
 (defwindow bar 
-  :monitor 1
+  :monitor 0
   :exclusive true
   :stacking "fg"
   :geometry (geometry :x "0%"
