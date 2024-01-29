@@ -1,8 +1,9 @@
 # Default Config for JAVLOCANDefault Config for JAVLOCAN
 
+export PATH=~/.local/bin:$PATH
+
 APP_DIR="/usr/share"
 PLUGINS_DIR="${APP_DIR}/zsh/plugins"
-
 export EDITOR=vi
 KEYTIMEOUT=1
 
@@ -56,7 +57,7 @@ source "/usr/share/fzf/key-bindings.zsh"
 
 
 # aliases
-alias vim="nvim"
+alias v="nvim"
 alias k="kubectl"
 alias gss="git status"
 alias ga.="git add . && git status"

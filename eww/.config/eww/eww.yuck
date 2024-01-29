@@ -1,3 +1,9 @@
+
+(include './bar.yuck')
+
+(include './controllers/controller.yuck')
+(include './controllers/volume.yuck')
+
 ;; ------------------------------------------------------------
 ;; -----------------------[ BAR WIDGETS ]----------------------
 ;; ------------------------------------------------------------
@@ -24,8 +30,10 @@
     ;; (metric :label "vol"
     ;;         :value volume
     ;;         :onchange "amixer -D pulse sset Master {}%")
-    (controller :label "vol"
-                :value volume)
+    ;; (controller :label "vol"
+    ;;             :value volume
+    ;;             :onscroll "volumectl set --{} 5 & eww update volume=$(volumectl get)")
+    (volume)
     (metric :label "ram"
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
@@ -79,28 +87,6 @@
 (defwidget xkb_layout []
   (button :class "xkb_layout")
 )
-
-;; ------------------------------------------------------------
-;; ----------------------[ CONTROLLERS ]-----------------------
-;; ------------------------------------------------------------
-
-(defwidget controller [label value ?onclick ?onrightclick ?onmiddleclick]
-; quiero tener un simbolo de volumen que haga cosas diferentes
-  ; 1. que cambie el icono con el porcentaje de volumen
-  ; 2. que al hacer click derecho abra un slider
-  ; 3. que al hacer click izquierdo se mutee
-  (button :class "controller"
-          :onclick onclick
-          :onrightclick onrightclick
-          :onmiddleclick onmiddleclick
-          :active true
-          :tooltip label
-    `${label}: ${value}`
-  )
-)
-
-(defpoll volume :interval "1s"
-  "./volume/get")
 
 (defwidget music []
   (box :class "music"

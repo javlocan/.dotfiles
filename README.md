@@ -1,13 +1,15 @@
 # My dotfiles repo
 
-## IN PROGRESS
+## IN PROGRESS - TODO
 
-- STOW everything in dotfiles and make install script that reads all directories and stows em, and with an -i --interactive flag
+-
+
+- volume script
 - eww: bar - controllers
-- !! UNIFY COMMON SCRIPTS
 
 ## DONE (or mostly done)
 
+- dotfiles stowed
 - hypr
 - foot
 

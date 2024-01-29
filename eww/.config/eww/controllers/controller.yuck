@@ -1,0 +1,24 @@
+;; ------------------------------------------------------------
+;; ----------------------[ CONTROLLERS ]-----------------------
+;; ------------------------------------------------------------
+
+(defwidget controller [label value ?onclick ?onrightclick ?onmiddleclick ?onscroll ?onhover]
+; quiero tener un simbolo de volumen que haga cosas diferentes
+  ; 1. que cambie el icono con el porcentaje de volumen
+  ; 2. que al hacer click derecho abra un slider
+  ; 3. que al hacer click izquierdo se mutee
+  ;; (button :class "controller"
+  (box :class "controller"
+    (eventbox 
+            :onscroll onscroll
+            :onclick onclick
+            :onrightclick onrightclick
+            :onmiddleclick onmiddleclick
+            :onhover onhover
+            :active true
+            :tooltip label
+        ` ${label} `
+  ))
+)
+
+
