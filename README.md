@@ -1,12 +1,15 @@
 # My dotfiles repo
 
-## IN PROGRESS
+## IN PROGRESS - TODO
 
+-
+
+- volume script
 - eww: bar - controllers
-- !! UNIFY COMMON SCRIPTS
 
 ## DONE (or mostly done)
 
+- dotfiles stowed
 - hypr
 - foot
 

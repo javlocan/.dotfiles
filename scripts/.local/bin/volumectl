@@ -1,0 +1,64 @@
+#!/bin/env bash
+
+
+function print_volume () {
+  pactl get-sink-volume @DEFAULT_SINK@ | grep -e '%' | sed 's/ //g' | cut -d "/" -f 2 | sed 's/%//'
+}
+
+function set_volume () {
+
+CURRENT=$(print_volume)
+max_vol=140
+
+up() {
+  new=$((CURRENT+$1))
+  if [ $new -lt $max_vol ]; then
+    pactl set-sink-volume @DEFAULT_SINK@ $new%
+  else
+    pactl set-sink-volume @DEFAULT_SINK@ $max_vol%
+  fi
+}
+
+down() {
+  new=$((CURRENT-$1))
+  if [ $new -gt 0 ]; then
+    pactl set-sink-volume @DEFAULT_SINK@ $new%
+  else
+    pactl set-sink-volume @DEFAULT_SINK@ 0%
+  fi
+}
+
+bell() {
+  paplay "/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+}
+
+echo "$3"
+if [ -n "$2" ]; then
+  if [[ "${1}" == "--up" ]];then
+    up "$2" & bell
+  elif [[ "$1" == "--down" ]];then
+    down "$2"  & bell
+  elif [[ "$1" == "--total" ]];then
+    pactl set-sink-volume @DEFAULT_SINK@ "$2%" & bell
+  fi
+else
+   echo "Value argument needed"
+fi
+
+}
+
+
+case $1 in
+    "daemon")
+    echo "Polla"
+    ;;
+    "get")
+    print_volume
+    ;;
+   "set")
+    set_volume "$2" "$3"
+    ;;
+    *)
+    echo "Mierda"
+    ;;
+esac

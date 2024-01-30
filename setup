@@ -1,0 +1,8 @@
+#!/bin/env bash
+
+source './_setup/_setup'
+
+while read -r module; do
+  stow --verbose=2 "$module"
+done <<< "$(list_modules)"
+

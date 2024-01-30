@@ -1,0 +1,133 @@
+
+(include './bar.yuck')
+
+(include './controllers/controller.yuck')
+(include './controllers/volume.yuck')
+
+;; ------------------------------------------------------------
+;; -----------------------[ BAR WIDGETS ]----------------------
+;; ------------------------------------------------------------
+
+(defwidget bar []
+  (centerbox :orientation "horizontal"
+             :class "bar"
+    (left_box)
+    (workspaces)
+    (right_box)
+  )
+)
+
+(defwidget left_box []
+
+  (box :class "left_box" :orientation "h" :space-evenly false :spacing 5 :halign "start"
+    (time)
+    music
+  ))
+
+
+(defwidget right_box []
+  (box :class "right_box" :orientation "h" :space-evenly false :spacing 5 :halign "end"
+    ;; (metric :label "vol"
+    ;;         :value volume
+    ;;         :onchange "amixer -D pulse sset Master {}%")
+    ;; (controller :label "vol"
+    ;;             :value volume
+    ;;             :onscroll "volumectl set --{} 5 & eww update volume=$(volumectl get)")
+    (volume)
+    (metric :label "ram"
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "disk"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+))
+
+
+;; ------------------------------------------------------------
+;; -----------------------[ WORKSPACES ]-----------------------
+;; ------------------------------------------------------------
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :spacing 5
+
+       (for num in workspace_list
+           (wrkspc :num num)
+       )
+  )
+)
+
+(defwidget wrkspc [num]
+  (button :onclick `hyprctl dispatch workspace ${num}`
+          :class { workspaces =~ num ? "using" : "" }
+          :style { monitors[0].active_workspace == num ? "background:pink; color:black" : " "}
+                   ;;monitors[1].active_workspace == num ? "background:yellow; color:black" : " " }
+          {num}
+  )
+)
+
+(defvar workspace_list
+  "[1,2,3,4,5,6,7,8,9,10]")
+
+(defpoll workspaces 
+  :interval "500ms"      
+  `hyprctl workspaces -j | jq '[.[] | .id]'`)
+
+(defpoll monitors
+  :interval "500ms"
+  `hyprctl monitors -j | jq '[.[] | {id: .id, name: .name, active_workspace: .activeWorkspace.id }]'`)
+
+
+;; ------------------------------------------------------------
+;; ------------------------[ KEYBOARD ]------------------------
+;; ------------------------------------------------------------
+
+(defwidget xkb_layout []
+  (button :class "xkb_layout")
+)
+
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+    {music != "" ? "🎵  ${music}" : ""}))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+;; (defpoll volume :interval "1s"
+;;   "volume/get")
+
+(defwidget time []
+  (label :class "time" :text time)
+)
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+(defwindow bar 
+  :monitor 0
+  :exclusive true
+  :stacking "fg"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "20px"
+                      :anchor "top center")
+  ;; :reserve (struts :side "top" :distance "20px")
+  (bar))
