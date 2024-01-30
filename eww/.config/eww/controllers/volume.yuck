@@ -3,7 +3,7 @@
 ;; -------------------------------------------------------------
 
 (defwidget volume []
-  (controller :label "vol"
+  (controller :label volume_icons
               :value _volume
               :onhover "eww open volume_popup --arg m=0 --arg x=200px "
               )
@@ -24,10 +24,11 @@
         :anchor "top right")
   (popup :name "volume")
 )
+(defvar volume_icons `["🔇","🔈","🔉","🔊","🔊"]`)
 
 (defwidget popup [name]
   (eventbox
-              :onscroll "volumectl set --{} 5 & eww update _volume=$(volumectl get)"
+    :onscroll "volumectl set --{} 5 & eww update _volume=$(volumectl get)"
     :onclick "eww close volume_popup"
     :onrightclick "eww close volume_popup"
     :onhoverlost "eww close volume_popup"

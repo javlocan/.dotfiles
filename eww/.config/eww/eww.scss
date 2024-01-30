@@ -2,18 +2,18 @@
 
 * {
   all: unset; //Unsets everything so you can style everything from scratch
-  font-size: 12px;
   // font-family: "NotoSans Nerd Font", sans-serif;
 }
 
 .bar {
+  font-size: 12px;
   border-radius: 0px;
   padding: 0.25rem 0.5rem;
   background: rgba(0, 0, 0, 0.2);
 }
 
 .left_box {
-  font-size: 14px;
+  // font-size: 14px;
 }
 
 .left_box > * {
@@ -22,7 +22,7 @@
 }
 
 .right_box {
-  font-size: 14px;
+  // font-size: 14px;
 }
 
 .right_box > * {
@@ -38,6 +38,11 @@
 .controller {
   border-radius: 0.75rem;
   background: rgba(100, 100, 100, 0.5);
+}
+
+.icon > * {
+  font-size: 16px;
+  margin: 3px 3px 0px 3px;
 }
 
 .time {
