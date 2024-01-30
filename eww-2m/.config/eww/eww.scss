@@ -77,9 +77,12 @@
 }
 
 .workspaces button {
+  font-size: 14px;
+  font-weight: 400;
+  color: $SILVER_100;
   padding: 2px;
-  min-width: 20px;
-  min-height: 20px;
+  min-width: 24px;
+  min-height: 24px;
   border-radius: 4px;
   background: $insensitive_base_color;
   transition: all 300ms;
@@ -87,6 +90,7 @@
 }
 
 .workspaces button.using {
+  font-weight: 600;
   opacity: 1;
 }
 

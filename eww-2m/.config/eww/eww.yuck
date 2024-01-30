@@ -1,6 +1,4 @@
 
-(include './bar.yuck')
-
 (include './controllers/controller.yuck')
 (include './controllers/volume.yuck')
 
@@ -62,8 +60,8 @@
 (defwidget wrkspc [num]
   (button :onclick `hyprctl dispatch workspace ${num}`
           :class { workspaces =~ num ? "using" : "" }
-          :style { monitors[0].active_workspace == num ? "background:pink; color:black" : 
-                   monitors[1].active_workspace == num ? "background:yellow; color:black" : " " }
+          :style { monitors[0].active_workspace == num ? "background:pink; color:#282828" : 
+                   monitors[1].active_workspace == num ? "background:yellow; color:#282828" : " " }
           {num}
   )
 )
