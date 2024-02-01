@@ -1,4 +1,4 @@
-# Default Config for JAVLOCANDefault Config for JAVLOCAN
+# Default Config for JAVLOCAN
 
 export PATH=~/.local/bin:$PATH
 
@@ -59,10 +59,12 @@ source "/usr/share/fzf/key-bindings.zsh"
 # aliases
 alias vim="nvim"
 alias k="kubectl"
-alias gss="git status"
-alias ga.="git add . && git status"
+alias gst="git status"
+alias gss="git status --short"
+alias ga.="git add . && git status --short"
 alias gau="git add -u"
 alias gcm="git commit -m"
+alias gcma="git commit --amend -m"
 alias gco="git checkout"
 alias gpl="git pull"
 alias gpr="git pull --rebase"
