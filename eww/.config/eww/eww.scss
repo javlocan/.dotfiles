@@ -86,6 +86,16 @@
   opacity: 1;
 }
 
+.workspaces button.active {
+  opacity: 1;
+}
+
+.workspaces button.visible {
+  color: black;
+  background: pink;
+  opacity: 1;
+}
+
 .workspaces button:hover {
   background-color: #d35d6e;
 }

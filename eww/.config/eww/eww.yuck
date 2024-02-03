@@ -53,31 +53,24 @@
        :space-evenly true
        :spacing 5
 
-       (for num in workspace_list
-           (wrkspc :num num)
+       (for id in workspace_list
+           (wrkspc :id id)
        )
   )
 )
 
-(defwidget wrkspc [num]
-  (button :onclick `hyprctl dispatch workspace ${num}`
-          :class { workspaces =~ num ? "using" : "" }
-          :style { monitors[0].active_workspace == num ? "background:pink; color:black" : " "}
-                   ;;monitors[1].active_workspace == num ? "background:yellow; color:black" : " " }
-          {num}
+(defwidget wrkspc [id]
+  (button :onclick `hyprctl dispatch workspace ${id}`
+          :class { wrkspcs?.[id].visible ? "visible" : wrkspcs?.[id].active ? "active" : ""}
+          {id}
   )
 )
 
 (defvar workspace_list
   "[1,2,3,4,5,6,7,8,9,10]")
 
-(defpoll workspaces 
-  :interval "500ms"      
-  `hyprctl workspaces -j | jq '[.[] | .id]'`)
-
-(defpoll monitors
-  :interval "500ms"
-  `hyprctl monitors -j | jq '[.[] | {id: .id, name: .name, active_workspace: .activeWorkspace.id }]'`)
+(deflisten wrkspcs 
+  "hyprevents workspaces")
 
 
 ;; ------------------------------------------------------------
