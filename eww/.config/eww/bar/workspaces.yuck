@@ -1,0 +1,87 @@
+;; ------------------------------------------------------------
+;; -----------------------[ WORKSPACES ]-----------------------
+;; ------------------------------------------------------------
+
+;; ------- Variables --------
+
+(defvar workspace_list
+  "[1,2,3,4,5,6,7,8,9,10]")
+
+(deflisten wrkspcs 
+  "hyprevents workspaces")
+
+(defvar hovered_wrkspc -1)
+
+;; ------- Widget --------
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :spacing 1
+
+       (for id in workspace_list
+           (wrkspc :id id)
+       )
+  )
+)
+
+(defwidget wrkspc [id]
+  (eventbox :onhover `eww update hovered_wrkspc=${id}`
+            :onhoverlost `eww update hovered_wrkspc=-1`
+
+    (box :class `wrkspc ${
+                 wrkspcs?.[id].visible ? "visible" 
+                 : wrkspcs?.[id].active ? "active" 
+                 : "" } ${ 
+                 id != hovered_wrkspc ?
+                 hovered_wrkspc != -1 ?
+                 "unhovered" : "" : "hovered"
+                 }`
+
+      (button :onclick `hyprctl dispatch workspace ${id}` 
+              :class { wrkspcs?.[id].visible ? "visible" : wrkspcs?.[id].active ? "active" : ""}
+              {id})
+      )
+  )
+)
+
+(defwidget workspaces_holder []
+(overlay 
+  (box :width 450)
+  (box :width 420 :halign "center" :valign "center"
+      (box :class "shadow ${hovered_wrkspc != -1 ? "hovered" : "unhovered"}"
+          ;; :style `margin-left: ${hovered_wrkspc!=-1 ? (hovered_wrkspc - 1) * 38 
+          ;;                       : jq(wrkspcs,' to_entries[] | select(.value.visible==true) | .key') * 38}px`
+          :style `margin-left: ${hovered_wrkspc == -1 ? 
+                                (jq(wrkspcs, 'to_entries[] | select(.value.visible==true)')?.key -1) * 38 
+                                : (hovered_wrkspc - 1) * 38 }px`
+          :valign "start" :halign "start"
+          :vexpand true :hexpand false
+          :width 80
+          :height 50
+      )
+   )
+  (box :class "workspaces_holder"
+      :valign "start"
+      :vexpand false
+      :hexpand false
+      :width 430
+      :height 6)
+    
+  )
+)
+
+;; ------- Window --------
+
+(defwindow workspaces
+  :monitor 0
+  :stacking "fg"
+  :geometry (geometry :x "0%"
+                      :y "-18px"
+                      :width "360px"
+                      :height "30px"
+                      :anchor "top center")
+  ;; :reserve (struts :side "top" :distance "20px")
+  (workspaces))
+

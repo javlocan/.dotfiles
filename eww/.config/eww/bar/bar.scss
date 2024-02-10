@@ -1,0 +1,29 @@
+.bar {
+  font-size: 12px;
+  border-radius: 0px;
+  padding: 0px 8px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.left_box {
+  min-height: 26px;
+  padding-top: 4px;
+  padding-bottom: 8px;
+  // font-size: 14px;
+}
+
+.left_box > * {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.right_box {
+  padding-top: 4px;
+  padding-bottom: 8px;
+  // font-size: 14px;
+}
+
+.right_box > * {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
