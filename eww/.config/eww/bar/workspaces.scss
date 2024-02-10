@@ -83,11 +83,14 @@
   }
 
   &.visible button {
+    font-weight: 800;
+    transition-delay: 100ms;
     // background: linear-gradient(to top, transparent 0%, rgba(80, 80, 80) 70%);
     background: transparent;
   }
 
   &.hovered button {
+    border: 2px solid rgba(80, 80, 80, 1);
     background: linear-gradient(
       to top,
       rgba(80, 80, 80, 0.3) 10%,
@@ -96,16 +99,22 @@
   }
 
   &.visible.unhovered button {
+    transition-delay: 0ms;
     background: rgba(80, 80, 80, 1);
-  }
-
-  &.active.hovered button,
-  &.visible.hovered button {
-    border: 2px solid rgba(80, 80, 80, 1);
     background: linear-gradient(
       to top,
       rgba(80, 80, 80, 0.3) 10%,
       rgba(80, 80, 80, 1) 70%
     );
   }
+
+  // &.visible.hovered button,
+  // &.active.hovered button {
+  //   border: 2px solid rgba(80, 80, 80, 1);
+  //   background: linear-gradient(
+  //     to top,
+  //     rgba(80, 80, 80, 0.3) 10%,
+  //     rgba(80, 80, 80, 1) 70%
+  //   );
+  // }
 }
