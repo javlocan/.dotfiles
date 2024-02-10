@@ -49,12 +49,12 @@
 (defwidget workspaces_holder []
 (overlay 
   (box :width 450)
-  (box :width 420 :halign "center" :valign "center"
+  (box :width 430 :halign "center" :valign "center"
       (box :class "shadow ${hovered_wrkspc != -1 ? "hovered" : "unhovered"}"
           ;; :style `margin-left: ${hovered_wrkspc!=-1 ? (hovered_wrkspc - 1) * 38 
           ;;                       : jq(wrkspcs,' to_entries[] | select(.value.visible==true) | .key') * 38}px`
           :style `margin-left: ${hovered_wrkspc == -1 ? 
-                                (jq(wrkspcs, 'to_entries[] | select(.value.visible==true)')?.key -1) * 38 
+                                (jq(wrkspcs, 'to_entries[] | select(.value.visible==true)')?.key -1) * 37
                                 : (hovered_wrkspc - 1) * 38 }px`
           :valign "start" :halign "start"
           :vexpand true :hexpand false
@@ -67,7 +67,7 @@
       :vexpand false
       :hexpand false
       :width 430
-      :height 6)
+      :height 12)
     
   )
 )

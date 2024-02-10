@@ -14,11 +14,11 @@
   margin-top: -20px;
   background: white;
   background: radial-gradient(
-    rgba(200, 100, 200, 0.6) 0%,
+    rgba(200, 100, 200, 0.8) 0%,
     rgba(200, 100, 200, 0.2) 40%,
     transparent 80%
   );
-  min-width: 80px;
+  min-width: 100px;
   min-height: 40px;
 
   // &.unhovered {
@@ -35,7 +35,7 @@
 }
 
 .wrkspc {
-  padding: 0 4px 0 4px;
+  padding: 0 3px 0 3px;
   min-width: 30px;
   min-height: 36px;
   transition: all 250ms;
