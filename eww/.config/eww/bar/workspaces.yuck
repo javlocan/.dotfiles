@@ -47,29 +47,11 @@
 )
 
 (defwidget workspaces_holder []
-(overlay 
-  (box :width 450)
-  (box :width 430 :halign "center" :valign "center"
-      (box :class "shadow ${hovered_wrkspc != -1 ? "hovered" : "unhovered"}"
-          ;; :style `margin-left: ${hovered_wrkspc!=-1 ? (hovered_wrkspc - 1) * 38 
-          ;;                       : jq(wrkspcs,' to_entries[] | select(.value.visible==true) | .key') * 38}px`
-          :style `margin-left: ${hovered_wrkspc == -1 ? 
-                                (jq(wrkspcs, 'to_entries[] | select(.value.visible==true)')?.key -1) * 37
-                                : (hovered_wrkspc - 1) * 38 }px`
-          :valign "start" :halign "start"
-          :vexpand true :hexpand false
-          :width 80
-          :height 50
-      )
-   )
   (box :class "workspaces_holder"
       :valign "start"
-      :vexpand false
-      :hexpand false
-      :width 430
-      :height 12)
-    
-  )
+      ;; :vexpand false
+      ;; :hexpand false
+    )
 )
 
 ;; ------- Window --------
@@ -78,9 +60,9 @@
   :monitor 0
   :stacking "fg"
   :geometry (geometry :x "0%"
-                      :y "-18px"
+                      :y "-11px"
                       :width "360px"
-                      :height "30px"
+                      :height "40px"
                       :anchor "top center")
   ;; :reserve (struts :side "top" :distance "20px")
   (workspaces))
