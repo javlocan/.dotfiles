@@ -67,10 +67,11 @@ alias gcm="git commit -m"
 alias gcma="git commit --amend -m"
 alias gco="git checkout"
 alias gpl="git pull"
-alias gpr="git pull --rebase"
-alias gprc="git rebase --continue"
+alias gplr="git pull --rebase"
+alias gplrc="git rebase --continue"
 alias gps="git push"
 alias gpsuo="git push --set-upstream origin"
+alias gdf="git diff"
 
 # prompt
 eval "$(starship init zsh)"

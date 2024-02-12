@@ -1,0 +1,73 @@
+;; ------------------------------------------------------------
+;; -----------------------[ BAR WIDGETS ]----------------------
+;; ------------------------------------------------------------
+
+;; ------- Variables --------
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+;; ------- Inside widgets --------
+
+(defwidget time []
+  (label :class "time" :text time)
+)
+
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+    {music != "" ? "🎵  ${music}" : ""}))
+
+;; ------- Structure widget --------
+
+(defwidget bar []
+  (centerbox :orientation "horizontal"
+             :class "bar"
+    (left_box)
+    (workspaces_holder)
+    (right_box)
+  )
+)
+
+(defwidget left_box []
+
+  (box :class "left_box" :orientation "h" :space-evenly false :spacing 5 :halign "start"
+    (time)
+    (music)
+  ))
+
+
+(defwidget right_box []
+  (box :class "right_box" :orientation "h" :space-evenly false :spacing 5 :halign "end"
+    ;; (metric :label "vol"
+    ;;         :value volume
+    ;;         :onchange "amixer -D pulse sset Master {}%")
+    ;; (controller :label "vol"
+    ;;             :value volume
+    ;;             :onscroll "volumectl set --{} 5 & eww update volume=$(volumectl get)")
+    (volume)
+    (metric :label "ram"
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "disk"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+))
+
+;; ------- Window --------
+
+(defwindow bar 
+  :monitor 1
+  :stacking "bg"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "40px"
+                      :anchor "top center")
+  ;; :reserve (struts :side "top" :distance "20px")
+  (bar))

@@ -9,10 +9,8 @@
               )
 )
 
-(defpoll _volume :interval "3s"
+(defpoll _volume :interval "10s"
 `volumectl get`)
-
-(defvar volume_icons `["🔇","🔈","🔉","🔊"]`)
 
 (defwindow volume_popup [m x]
     :monitor m
@@ -26,6 +24,7 @@
         :anchor "top right")
   (popup :name "volume")
 )
+(defvar volume_icons `["🔇","🔈","🔉","🔊","🔊"]`)
 
 (defwidget popup [name]
   (eventbox
