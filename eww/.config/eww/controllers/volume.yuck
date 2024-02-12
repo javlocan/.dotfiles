@@ -5,25 +5,14 @@
 (defwidget volume []
   (controller :label volume_icons
               :value _volume
-              :onhover "eww open volume_popup --arg m=0 --arg x=200px "
+              :onhover "eww open volume_popup --arg m=0 --arg x=209px "
+              :onrightclick "volumectl set --{} 100 && eww update _volume=$(volumectl get)"
               )
 )
 
 (defpoll _volume :interval "10s"
 `volumectl get`)
 
-(defwindow volume_popup [m x]
-    :monitor m
-    ;; :focusable true
-    :stacking "fg"
-    :geometry (geometry
-        :x x
-        :y "5px"
-        :width  "60px"
-        :height "60px"
-        :anchor "top right")
-  (popup :name "volume")
-)
 (defvar volume_icons `["🔇","🔈","🔉","🔊","🔊"]`)
 
 (defwidget popup [name]
@@ -33,13 +22,33 @@
     :onrightclick "eww close volume_popup"
     :onhoverlost "eww close volume_popup"
 
-    (circular-progress 
-      :class `${name}-popup`
-      :value _volume
-      :start-at 25
-      :thickness 5
-    {_volume})
+
+  (box :class `${name}-popup` :orientation "v" :space-evenly false
+    (box :class "progress" :orientation "v" :space-evenly false :active false
+      (circular-progress 
+          :class `${name}-progress`
+          :value _volume
+          :hexpand true
+          :vexpand true
+          :start-at 25
+          :thickness 4)
+      (label :class `${name}-label`
+             :text _volume)
+      )
+    )
   )
 ) 
 
+; -------- Window --------
 
+(defwindow volume_popup [m x]
+    :monitor m
+    :stacking "fg"
+    :geometry (geometry
+        :x x
+        :y "5px"
+        :width  "40px"
+        :height "60px"
+        :anchor "top right")
+  (popup :name "volume")
+)

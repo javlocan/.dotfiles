@@ -2,24 +2,27 @@
 
 ## IN PROGRESS - TODO
 
--
+Finish EWW
 
-- volume script
-- eww: bar - controllers
+- Updates
+- Controllers and metrics
+- Eww Widgets ^^^^
 
-## DONE (or mostly done)
+- EWW BAR STYLE OK // STOP
+
+### DONE (or mostly done)
 
 - dotfiles stowed
 - hypr
 - foot
 
-## OLD (don't trust these)
+### OLD (don't trust these)
 
 - wofi
 - sway
 - swaylock
 
-### For saving my changes in my dotfiles
+#### For saving my changes in my dotfiles
 
 I store all my dotfiles under the same directory in ~/.dotfiles/\*  
 The next thing is to symlink everything to its own places.  
