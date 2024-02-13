@@ -1,0 +1,63 @@
+;; -------------------------------------------------------------
+;; -------------------- UPDATES ----------------------
+;; -------------------------------------------------------------
+
+(defwidget updates []
+(box :class "updates"
+  (overlay
+    (image  :path "./assets/logo-white.png"
+        :class "updates_image"
+        :image-witdh 20
+        :image-height 20)
+    (eventbox :style "padding:4px"
+      (box  :class "updates_count" 
+          :style {_updates>0 ? "background:red;" : ""}
+          :height 8
+          :width 8
+          :halign "end"
+          :valign "start")
+      )
+)
+  )
+)
+
+(defpoll _updates :interval "7200s"
+`checkupdates | wc -l`)
+
+(defwidget popup [name]
+  (eventbox
+    :onscroll "volumectl set --{} 5 & eww update _volume=$(volumectl get)"
+    :onclick "eww close volume_popup"
+    :onrightclick "eww close volume_popup"
+    :onhoverlost "eww close volume_popup"
+
+
+  (box :class `${name}-popup` :orientation "v" :space-evenly false
+    (box :class "progress" :orientation "v" :space-evenly false :active false
+      (circular-progress 
+          :class `${name}-progress`
+          :value _volume
+          :hexpand true
+          :vexpand true
+          :start-at 25
+          :thickness 4)
+      (label :class `${name}-label`
+             :text _volume)
+      )
+    )
+  )
+) 
+
+; -------- Window --------
+
+(defwindow updates_popup [m x]
+    :monitor m
+    :stacking "fg"
+    :geometry (geometry
+        :x x
+        :y "5px"
+        :width  "40px"
+        :height "60px"
+        :anchor "top right")
+  (popup :name "volume")
+)

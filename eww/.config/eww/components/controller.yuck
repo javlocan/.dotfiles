@@ -27,8 +27,8 @@
     :class "icon"
     :orientation "h"
     ;; :onhoverlost "eww close volume_popup"
-    `${value==0?icon_list[0]:value==100/length?
-      icon_list[1]?:"💣":value<=100/(length - 2)?
+    `${value==0?icon_list[0]:value<=100/length?
+      icon_list[1]?:"💣":value<=1*100/(length - 2)?
       icon_list[2]?:"💣":value<=2*100/(length - 2)?
       icon_list[3]?:"💣":value<=3*100/(length - 2)?
       icon_list[4]?:"💣":value<=4*100/(length - 2)?

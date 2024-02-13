@@ -65,13 +65,14 @@
 
 (defwidget right_box []
   (box :class "right_box" :orientation "h" :space-evenly false :spacing 5 :halign "end"
-    (volume)
     (metric :label "ram"
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
     (metric :label "disk"
             :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
             :onchange "")
+    (volume)
+    (updates)
 ))
 
 (defwidget bottom_space []

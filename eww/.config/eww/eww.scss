@@ -14,9 +14,12 @@ $bg-color: rgba(40, 40, 40, 0.5);
 }
 
 @import "./bar/bar.scss";
-@import "./bar/workspaces.scss";
-@import "./controllers/controller.scss";
-@import "./controllers/volume.scss";
+
+@import "./components/controller.scss";
+
+@import "./modules/workspaces.scss";
+// @import "./modules/updates.scss";
+@import "./modules/volume.scss";
 
 .sidestuff slider {
   all: unset;
@@ -25,11 +28,7 @@ $bg-color: rgba(40, 40, 40, 0.5);
 
 .controller {
   @include brick;
-}
-
-.icon > * {
-  font-size: 12px;
-  margin: 3px 3px 0px 3px;
+  padding: 2px 8px 0 8px;
 }
 
 .time {
@@ -45,7 +44,7 @@ $bg-color: rgba(40, 40, 40, 0.5);
   background-color: #4e4e4e;
   border-radius: 50px;
   min-height: 3px;
-  min-width: 50px;
+  min-width: 30px;
   margin-left: 10px;
   margin-right: 5px;
 }
@@ -55,4 +54,18 @@ $bg-color: rgba(40, 40, 40, 0.5);
   background-color: $LIME_500;
   color: #000000;
   border-radius: 10px;
+}
+
+.updates {
+  .updates_image {
+    @include brick;
+    opacity: 0.6;
+  }
+
+  .updates_count {
+    font-size: 9px;
+    font-weight: 900;
+    text-shadow: 0 5px 5px black;
+    border-radius: 50%;
+  }
 }
