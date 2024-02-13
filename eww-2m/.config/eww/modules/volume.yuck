@@ -1,0 +1,54 @@
+;; -------------------------------------------------------------
+;; -------------------- VOLUME CONTROLLER ----------------------
+;; -------------------------------------------------------------
+
+(defwidget volume []
+  (controller :label volume_icons
+              :value _volume
+              :onhover "eww open volume_popup --arg m=0 --arg x=33px "
+              :onrightclick "volumectl set --{} 100 && eww update _volume=$(volumectl get)"
+              )
+)
+
+(defpoll _volume :interval "10s"
+`volumectl get`)
+
+(defvar volume_icons `["🔇","🔈","🔉","🔉","🔊"]`)
+
+(defwidget popup [name]
+  (eventbox
+    :onscroll "volumectl set --{} 5 & eww update _volume=$(volumectl get)"
+    :onclick "eww close volume_popup"
+    :onrightclick "eww close volume_popup"
+    :onhoverlost "eww close volume_popup"
+
+
+  (box :class `${name}-popup` :orientation "v" :space-evenly false
+    (box :class "progress" :orientation "v" :space-evenly false :active false
+      (circular-progress 
+          :class `${name}-progress`
+          :value _volume
+          :hexpand true
+          :vexpand true
+          :start-at 25
+          :thickness 4)
+      (label :class `${name}-label`
+             :text _volume)
+      )
+    )
+  )
+) 
+
+; -------- Window --------
+
+(defwindow volume_popup [m x]
+    :monitor m
+    :stacking "fg"
+    :geometry (geometry
+        :x x
+        :y "5px"
+        :width  "40px"
+        :height "60px"
+        :anchor "top right")
+  (popup :name "volume")
+)

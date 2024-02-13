@@ -26,38 +26,62 @@
 ;; ------- Structure widget --------
 
 (defwidget bar []
-  (centerbox :orientation "horizontal"
-             :class "bar"
-    (left_box)
-    (workspaces_holder)
-    (right_box)
+  (overlay 
+   (background)
+   (foreground)))
+
+(defwidget background []
+  (box :class "background" :width 410 :height 80 :halign "center" :valign "center" 
+      (box :class "shiny_thing ${hovered_wrkspc != -1 ? "hovered" : "unhovered"}"
+          ;; :style `margin-left: ${hovered_wrkspc!=-1 ? (hovered_wrkspc - 1) * 38 
+          ;;                       : jq(wrkspcs,' to_entries[] | select(.value.visible==true) | .key') * 38}px`
+          :style `margin-left: ${hovered_wrkspc == -1 ? 
+                                (jq(wrkspcs, 'to_entries[] | select(.value.visible==true)')?.key -1) * 37
+                                : (hovered_wrkspc - 1) * 38 }px`
+          :valign "start" :halign "start"
+          :vexpand false :hexpand false
+          :height 80 :width 80
+      )
+
   )
 )
 
-(defwidget left_box []
+(defwidget foreground []
+  (box :class "foreground"  :orientation "vertical"
+    (centerbox  :orientation "horizontal" :class "bar"
+       (left_box)
+       (workspaces_holder) 
+       (right_box))
+     (bottom_space)))
 
+(defwidget left_box []
   (box :class "left_box" :orientation "h" :space-evenly false :spacing 5 :halign "start"
     (time)
     (music)
   ))
 
+(defwidget workspaces_holder []
+  (box :class "workspaces_holder" ))
 
 (defwidget right_box []
   (box :class "right_box" :orientation "h" :space-evenly false :spacing 5 :halign "end"
-    ;; (metric :label "vol"
-    ;;         :value volume
-    ;;         :onchange "amixer -D pulse sset Master {}%")
-    ;; (controller :label "vol"
-    ;;             :value volume
-    ;;             :onscroll "volumectl set --{} 5 & eww update volume=$(volumectl get)")
-    (volume)
     (metric :label "ram"
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
     (metric :label "disk"
             :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
             :onchange "")
+    (volume)
+    (updates)
 ))
+
+(defwidget bottom_space []
+    (box :class "bottom_space"
+      (box :halign "start"
+          :class "left_corner")
+      (revealer :halign "end"
+          :class "right_corner"
+          (box :class "circle"))))
 
 ;; ------- Window --------
 
@@ -67,7 +91,7 @@
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "100%"
-                      :height "40px"
+                      :height "80px" ;; quitar
                       :anchor "top center")
   ;; :reserve (struts :side "top" :distance "20px")
   (bar))

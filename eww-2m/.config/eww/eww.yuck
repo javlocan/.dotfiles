@@ -3,10 +3,12 @@
 ;; ------------------------------------------------------------
 
 (include './bar/bar.yuck')
-(include './bar/workspaces.yuck')
 
-(include './controllers/controller.yuck')
-(include './controllers/volume.yuck')
+(include './components/controller.yuck')
+
+(include './modules/workspaces.yuck')
+(include './modules/volume.yuck')
+(include './modules/updates.yuck')
 
 ;; ------------------------------------------------------------
 ;; ------------------------[ KEYBOARD ]------------------------

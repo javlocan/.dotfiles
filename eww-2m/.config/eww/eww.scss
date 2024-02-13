@@ -5,8 +5,21 @@
   // font-family: "NotoSans Nerd Font", sans-serif;
 }
 
+$bg-color: rgba(40, 40, 40, 0.5);
+
+@mixin brick {
+  border-radius: 6px;
+  padding: 3px 8px 3px 8px;
+  background: $bg-color;
+}
+
 @import "./bar/bar.scss";
-@import "./bar/workspaces.scss";
+
+@import "./components/controller.scss";
+
+@import "./modules/workspaces.scss";
+// @import "./modules/updates.scss";
+@import "./modules/volume.scss";
 
 .sidestuff slider {
   all: unset;
@@ -14,23 +27,16 @@
 }
 
 .controller {
-  border-radius: 6px;
-  background: rgba(100, 100, 100, 0.2);
-}
-
-.icon > * {
-  font-size: 12px;
-  margin: 3px 3px 0px 3px;
+  @include brick;
+  padding: 2px 8px 0 8px;
 }
 
 .time {
-  border-radius: 6px;
-  background: rgba(100, 100, 100, 0.2);
+  @include brick;
 }
 
 .metric {
-  border-radius: 6px;
-  background: rgba(100, 100, 100, 0.2);
+  @include brick;
 }
 
 .metric scale trough {
@@ -38,7 +44,7 @@
   background-color: #4e4e4e;
   border-radius: 50px;
   min-height: 3px;
-  min-width: 50px;
+  min-width: 30px;
   margin-left: 10px;
   margin-right: 5px;
 }
@@ -48,4 +54,18 @@
   background-color: $LIME_500;
   color: #000000;
   border-radius: 10px;
+}
+
+.updates {
+  .updates_image {
+    @include brick;
+    opacity: 0.6;
+  }
+
+  .updates_count {
+    font-size: 9px;
+    font-weight: 900;
+    text-shadow: 0 5px 5px black;
+    border-radius: 50%;
+  }
 }
