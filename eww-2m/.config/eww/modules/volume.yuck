@@ -5,7 +5,7 @@
 (defwidget volume []
   (controller :label volume_icons
               :value _volume
-              :onhover "eww open volume_popup --arg m=0 --arg x=33px "
+              :onhover "eww open volume_popup --arg m=1 --arg x=33px "
               :onrightclick "volumectl set --{} 100 && eww update _volume=$(volumectl get)"
               )
 )

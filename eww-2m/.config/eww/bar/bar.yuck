@@ -32,11 +32,22 @@
 
 (defwidget background []
   (box :class "background" :width 410 :height 80 :halign "center" :valign "center" 
-      (box :class "shiny_thing ${hovered_wrkspc != -1 ? "hovered" : "unhovered"}"
+      (box :class "shiny_thing-1 ${hovered_wrkspc != -1 ? "hovered" : "unhovered"}"
           ;; :style `margin-left: ${hovered_wrkspc!=-1 ? (hovered_wrkspc - 1) * 38 
           ;;                       : jq(wrkspcs,' to_entries[] | select(.value.visible==true) | .key') * 38}px`
           :style `margin-left: ${hovered_wrkspc == -1 ? 
-                                (jq(wrkspcs, 'to_entries[] | select(.value.visible==true)')?.key -1) * 37
+                                (jq(wrkspcs, 'to_entries[] | select(.value.visible==true and .value.monitor=="HDMI-A-1")')[0]?.key - 1) * 37
+
+                                : (hovered_wrkspc - 1) * 38 }px`
+          :valign "start" :halign "start"
+          :vexpand false :hexpand false
+          :height 80 :width 80
+      )
+      (box :class "shiny_thing-2 ${hovered_wrkspc != -1 ? "hovered" : "unhovered"}"
+          ;; :style `margin-left: ${hovered_wrkspc!=-1 ? (hovered_wrkspc - 1) * 38 
+          ;;                       : jq(wrkspcs,' to_entries[] | select(.value.visible==true) | .key') * 38}px`
+          :style `margin-left: ${hovered_wrkspc == -1 ? 
+                                (jq(wrkspcs, 'to_entries[] | select(.value.visible==true and .value.monitor=="HDMI-A-2")')?.key - 1) * 37
                                 : (hovered_wrkspc - 1) * 38 }px`
           :valign "start" :halign "start"
           :vexpand false :hexpand false

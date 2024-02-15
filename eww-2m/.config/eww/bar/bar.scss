@@ -62,20 +62,37 @@
   min-height: 80px;
 
   .shiny_thing {
-    transition: all 360ms;
-    border-radius: 8px;
-    margin-top: -44px;
-    background: white;
-    background: radial-gradient(
-      rgba(200, 100, 150, 0.6) 0%,
-      rgba(200, 100, 150, 0.15) 30%,
-      transparent 50%
-    );
-    min-width: 80px;
-    min-height: 80px;
-
     &.hovered {
       opacity: 1;
     }
+
+    //
+    // &-1 {
+    //   transition: all 360ms;
+    //   border-radius: 8px;
+    //   margin-top: -44px;
+    //   background: white;
+    //   min-width: 80px;
+    //   min-height: 80px;
+    //   background: radial-gradient(
+    //     rgba(200, 100, 150, 0.6) 0%,
+    //     rgba(200, 100, 150, 0.15) 30%,
+    //     transparent 50%
+    //   );
+    // }
+    //
+    // &-2 {
+    //   transition: all 360ms;
+    //   border-radius: 8px;
+    //   margin-top: -44px;
+    //   background: white;
+    //   min-width: 80px;
+    //   min-height: 80px;
+    //   background: radial-gradient(
+    //     rgba(100, 200, 100, 0.6) 0%,
+    //     rgba(100, 200, 100, 0.15) 30%,
+    //     transparent 50%
+    //   );
+    // }
   }
 }
