@@ -1,29 +1,29 @@
 -- set leader key to space
 vim.g.mapleader = " "
 
-require("config.lazy")
-require("config.keymaps")
-require("config.options")
+local lazy = require("lazy")
+require("plugins.config.keymaps")
+require("plugins.config.options")
 
-require("lazy").setup({
-  { import = "config.common" },
+lazy.setup({
+	{ import = "plugins.config.common" },
 
-  { import = "theme" },
-  { import = "nav" },
-  { import = "text" },
-  { import = "code" },
-  { import = "code.lsp" },
-  { import = "git" },
-  { import = "extra" },
+	{ import = "plugins.theme" },
+	{ import = "plugins.nav" },
+	{ import = "plugins.text" },
+	{ import = "plugins.code" },
+	{ import = "plugins.code.lsp" },
+	{ import = "plugins.git" },
+	{ import = "plugins.extra" },
 }, {
-  install = {
-    colorscheme = { "onedark" },
-  },
-  checker = {
-    enabled = true,
-    notify = false,
-  },
-  change_detection = {
-    notify = false,
-  },
+	install = {
+		colorscheme = { "onedark" },
+	},
+	checker = {
+		enabled = true,
+		notify = false,
+	},
+	change_detection = {
+		notify = false,
+	},
 })
