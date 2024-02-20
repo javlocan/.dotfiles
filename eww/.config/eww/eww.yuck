@@ -9,21 +9,12 @@
 (include './modules/workspaces.yuck')
 (include './modules/volume.yuck')
 (include './modules/updates.yuck')
+(include './modules/output.yuck')
 
 ;; ------------------------------------------------------------
 ;; ------------------------[ KEYBOARD ]------------------------
 ;; ------------------------------------------------------------
 
-(defwidget xkb_layout []
-  (button :class "xkb_layout")
-)
-
-(defwidget music []
-  (box :class "music"
-       :orientation "h"
-       :space-evenly false
-       :halign "start"
-    {music != "" ? "🎵  ${music}" : ""}))
 
 (defwidget metric [label value onchange]
   (box :orientation "h"

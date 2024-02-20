@@ -1,0 +1,30 @@
+
+;; -------------------------------------------------------------
+;; ---------------------  OUTPUT SPACE  ------------------------
+;; -------------------------------------------------------------
+
+(deflisten eww_windows 'ewwctl windows')
+
+
+; -------- Window --------
+
+(defwidget output []
+  (box 
+    :style "background:yellow; color: black;"
+  `${eww_windows}`
+  )
+)
+
+; -------- Window --------
+
+(defwindow output [m]
+    :monitor m
+    :stacking "fg"
+    :geometry (geometry
+        :x "500px"
+        :y "5px"
+        :width  "300px"
+        :height "32px"
+        :anchor "top right")
+  (output :name "volume")
+)
