@@ -29,8 +29,21 @@
 --   },
 -- }
 return {
-  'sainnhe/gruvbox-material',
-  'folke/tokyonight.nvim',
+  {
+    'folke/tokyonight.nvim',
+  },
+  {
+    'sainnhe/gruvbox-material',
+    config = function()
+      vim.g.gruvbox_material_enable_bold = '1'
+      vim.g.gruvbox_material_enable_italic = '1'
+      vim.g.gruvbox_material_sign_column_background = 'grey'
+      -- vim.g.gruvbox_material_ui_contrast = "high"
+      vim.g.gruvbox_material_background = 'hard'
+      vim.g.gruvbox_material_diagnostic_line_highlight = '1'
+      vim.g.gruvbox_material_diagnostic_text_highlight = '1'
+    end,
+  },
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -39,7 +52,7 @@ return {
       vim.cmd.colorscheme 'onedark'
       local colorscheme_augroup = vim.api.nvim_create_augroup('colorscheme', { clear = true })
       local colorschemes = {}
-      colorschemes['gruvbox-material'] = { 'rust' }
+      colorschemes['gruvbox-material'] = { 'rust', 'lua' }
       colorschemes['onedark'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json' }
       colorschemes['tokyonight'] = { 'html', 'htmldjango', 'css', 'scss' }
 

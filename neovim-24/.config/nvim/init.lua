@@ -6,7 +6,7 @@ require('lazy').setup({
   { import = 'ui.keymaps' },
   -- NOTE: 2. UI keymaps have detailed explanation on plugin configuration
   { import = 'ui.colorscheme' },
-  { import = 'ui.indent_line' },
+  -- { import = 'ui.indent_line' },
   { import = 'ui.git' },
   { import = 'ui.navigation' },
 
