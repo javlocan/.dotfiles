@@ -3,9 +3,10 @@ require 'config.keymaps'
 
 require('lazy').setup({
   -- Import plugins by domain
+  { import = 'ui.keymaps' },
   -- NOTE: 2. UI keymaps have detailed explanation on plugin configuration
   { import = 'ui.colorscheme' },
-  { import = 'ui.keymaps' },
+  { import = 'ui.indent_line' },
   { import = 'ui.git' },
   { import = 'ui.navigation' },
 
@@ -55,7 +56,6 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
 }, {
   ui = {
