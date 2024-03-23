@@ -16,6 +16,7 @@ require('lazy').setup({
   { import = 'code.typing' },
   { import = 'code.formatting' },
 
+  { import = 'code.lint' },
   { import = 'code.lsp' },
   { import = 'code.cmp' },
 
@@ -56,7 +57,6 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.lint',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
