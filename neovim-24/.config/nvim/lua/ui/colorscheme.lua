@@ -29,12 +29,43 @@
 --   },
 -- }
 return {
+  'sainnhe/gruvbox-material',
+  'folke/tokyonight.nvim',
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'onedark'
+      local colorscheme_augroup = vim.api.nvim_create_augroup('colorscheme', { clear = true })
+      local colorschemes = {}
+      colorschemes['gruvbox-material'] = { 'rust' }
+      colorschemes['onedark'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json' }
+      colorschemes['tokyonight'] = { 'html', 'htmldjango', 'css', 'scss' }
+
+      vim.api.nvim_create_autocmd({
+        -- 'FileType',
+        'BufEnter',
+        -- 'WinEnter',
+      }, {
+        group = colorscheme_augroup,
+        callback = function()
+          -- Change colorscheme by filetype
+          local colorscheme = vim.cmd.colorscheme
+          local filetype = vim.bo.filetype
+          print(string.format('filetype: %s', filetype))
+          for cs, fts in pairs(colorschemes) do
+            for i, ft in pairs(fts) do
+              if ft == filetype then
+                if cs ~= colorscheme then
+                  local colorscheme_cs = string.format('colorscheme %s', cs)
+                  vim.cmd(colorscheme_cs)
+                end
+              end
+            end
+          end
+        end,
+      })
     end,
   },
 }
