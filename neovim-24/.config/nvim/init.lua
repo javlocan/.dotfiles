@@ -17,9 +17,10 @@ require('lazy').setup({
   { import = 'code.typing' },
   { import = 'code.formatting' },
 
-  { import = 'code.lint' },
   { import = 'code.lsp' },
   { import = 'code.cmp' },
+  { import = 'code.dap' },
+  { import = 'code.lint' },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -51,13 +52,6 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
-
-  -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-  --
-  --  Here are some example plugins that I've included in the Kickstart repository.
-  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
-  require 'kickstart.plugins.debug',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
