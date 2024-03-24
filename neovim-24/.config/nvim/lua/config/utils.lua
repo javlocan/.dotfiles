@@ -19,10 +19,14 @@ local BUILD_MINICOLORS_TABLE = function(colorschemes)
 end
 
 local SET_COLORSCHEME = function(cs)
-  local animate = function()
-    MiniColors.animate({ cs }, { transition_steps = 10, transition_duration = 120 })
-  end
-  vim.schedule(animate)
+  -- local animate = function()
+  --   MiniColors.animate({ cs }, { transition_steps = 10, transition_duration = 120 })
+  -- end
+  -- vim.schedule(animate)
+  vim.schedule(function()
+    local cmd = string.format('colorscheme %s', cs)
+    vim.cmd(cmd)
+  end)
 end
 
 local CHECK_AND_SET_COLORSCHEME = function(colorschemes, minicolors, default)
@@ -35,13 +39,15 @@ local CHECK_AND_SET_COLORSCHEME = function(colorschemes, minicolors, default)
     for lang, cs in pairs(colorschemes) do
       if filetype == lang and colorscheme ~= cs then
         not_in_list = false
-        SET_COLORSCHEME(minicolors[cs])
+        -- SET_COLORSCHEME(minicolors[cs])
+        SET_COLORSCHEME(cs)
         break
       end
     end
 
     if not_in_list and colorscheme ~= default then
-      SET_COLORSCHEME(minicolors[default])
+      -- SET_COLORSCHEME(minicolors[default])
+      SET_COLORSCHEME(default)
     end
   end
 end
