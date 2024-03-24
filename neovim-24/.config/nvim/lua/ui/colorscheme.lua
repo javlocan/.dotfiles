@@ -23,7 +23,9 @@ return {
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      local default = 'onedark'
+      UTILS.SET_COLORSCHEME(default)
+
       local colorscheme_augroup = vim.api.nvim_create_augroup('colorscheme', { clear = true })
 
       local colorschemes = {}
@@ -40,14 +42,7 @@ return {
       }, {
         group = colorscheme_augroup,
         callback = function()
-          local colorscheme = vim.cmd.colorscheme
-          local filetype = vim.bo.filetype
-
-          for lang, cs in pairs(colorschemes) do
-            if filetype == lang and colorscheme ~= cs then
-              vim.cmd(string.format('colorscheme %s', cs))
-            end
-          end
+          UTILS.CHECK_AND_SET_COLORSCHEME(colorschemes, default)
         end,
       })
     end,
