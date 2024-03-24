@@ -3,25 +3,6 @@ require 'config.keymaps'
 require 'config.utils'
 
 require('lazy').setup({
-  -- Import plugins by domain
-  { import = 'ui.keymaps' },
-  -- NOTE: 2. UI keymaps have detailed explanation on plugin configuration
-  { import = 'ui.colorscheme' },
-  -- { import = 'ui.indent_line' },
-  { import = 'ui.git' },
-  { import = 'ui.navigation' },
-
-  -- NOTE: 1. Comment has basic instructions on initializing plugins
-  { import = 'code.comment' },
-  { import = 'code.treesitter' },
-  { import = 'code.typing' },
-  { import = 'code.formatting' },
-
-  { import = 'code.lsp' },
-  { import = 'code.cmp' },
-  { import = 'code.dap' },
-  { import = 'code.lint' },
-
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
@@ -32,6 +13,8 @@ require('lazy').setup({
       --  - yinq - [Y]ank [I]nside [N]ext [']quote
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
+
+      require('mini.colors').setup {}
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -52,6 +35,24 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+  -- Import plugins by domain
+  { import = 'ui.keymaps' },
+  -- NOTE: 2. UI keymaps have detailed explanation on plugin configuration
+  { import = 'ui.colorscheme' },
+  -- { import = 'ui.indent_line' },
+  { import = 'ui.git' },
+  { import = 'ui.navigation' },
+
+  -- NOTE: 1. Comment has basic instructions on initializing plugins
+  { import = 'code.comment' },
+  { import = 'code.treesitter' },
+  { import = 'code.typing' },
+  { import = 'code.formatting' },
+
+  { import = 'code.lsp' },
+  { import = 'code.cmp' },
+  { import = 'code.dap' },
+  { import = 'code.lint' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

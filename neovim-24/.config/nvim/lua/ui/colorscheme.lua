@@ -20,11 +20,13 @@ return {
   },
   {
     -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    -- 'navarasu/onedark.nvim',
+    'olimorris/onedarkpro.nvim',
     priority = 1000,
     config = function()
       local default = 'onedark'
-      UTILS.SET_COLORSCHEME(default)
+      -- UTILS.SET_COLORSCHEME(default)
+      vim.cmd(string.format('colorscheme %s', default))
 
       local colorscheme_augroup = vim.api.nvim_create_augroup('colorscheme', { clear = true })
 
