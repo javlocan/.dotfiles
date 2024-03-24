@@ -31,7 +31,7 @@ return {
       colorschemes['onedark'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json' }
       colorschemes['tokyonight'] = { 'html', 'htmldjango', 'css', 'scss' }
 
-      local colorschemes = BUILD_COLORSCHEME_TABLE(colorschemes)
+      local colorschemes = UTILS.BUILD_COLORSCHEME_TABLE(colorschemes)
 
       vim.api.nvim_create_autocmd({
         -- 'FileType',
