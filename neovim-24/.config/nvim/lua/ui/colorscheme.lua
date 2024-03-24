@@ -5,9 +5,11 @@ return {
   -- },
   {
     'folke/tokyonight.nvim',
+    priority = 2000,
   },
   {
     'sainnhe/gruvbox-material',
+    priority = 2000,
     config = function()
       vim.g.gruvbox_material_enable_bold = '1'
       vim.g.gruvbox_material_enable_italic = '1'
@@ -35,6 +37,7 @@ return {
       colorschemes['onedark'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json' }
       colorschemes['tokyonight'] = { 'html', 'htmldjango', 'css', 'scss' }
 
+      local minicolors = UTILS.BUILD_MINICOLORS_TABLE(colorschemes)
       local colorschemes = UTILS.BUILD_COLORSCHEME_TABLE(colorschemes)
 
       vim.api.nvim_create_autocmd({
@@ -44,7 +47,7 @@ return {
       }, {
         group = colorscheme_augroup,
         callback = function()
-          UTILS.CHECK_AND_SET_COLORSCHEME(colorschemes, default)
+          UTILS.CHECK_AND_SET_COLORSCHEME(colorschemes, minicolors, default)
         end,
       })
     end,
