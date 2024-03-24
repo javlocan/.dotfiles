@@ -1,5 +1,6 @@
 require 'config.init'
 require 'config.keymaps'
+require 'config.utils'
 
 require('lazy').setup({
   -- Import plugins by domain
