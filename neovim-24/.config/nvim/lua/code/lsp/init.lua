@@ -2,6 +2,7 @@ return {
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -13,7 +14,7 @@ return {
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('lutj-lsp-attach', { clear = true }),
+        group = vim.api.nvim_create_augroup('luv4tj-lsp-attach', { clear = true }),
         callback = function(event)
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -49,7 +50,18 @@ return {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
-        rust_analyzer = {},
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = true,
+              check = {
+                enable = true,
+                command = 'clippy',
+                features = 'all',
+              },
+            },
+          },
+        },
         tsserver = {},
         lua_ls = {
           settings = {

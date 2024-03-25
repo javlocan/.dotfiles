@@ -52,7 +52,16 @@ local CHECK_AND_SET_COLORSCHEME = function(colorschemes, minicolors, default)
   end
 end
 
+local bufferline = {}
+
+bufferline.bdel = function(num)
+  require('bufferline').exec(num, function(buf, _)
+    vim.cmd('bdelete ' .. buf.id)
+  end)
+end
+
 UTILS = {
+  bufferline = bufferline,
   BUILD_MINICOLORS_TABLE = BUILD_MINICOLORS_TABLE,
   BUILD_COLORSCHEME_TABLE = BUILD_COLORSCHEME_TABLE,
   SET_COLORSCHEME = SET_COLORSCHEME,
