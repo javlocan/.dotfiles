@@ -27,9 +27,9 @@
 (defwidget popup [name]
   (eventbox
     :onscroll "volumectl set --{} 5 & eww update _volume=$(volumectl get)"
-    :onclick "eww close volume_popup"
-    :onrightclick "eww close volume_popup"
-    :onhoverlost "eww close volume_popup"
+    ;; :onclick "eww close volume_popup"
+    ;; :onrightclick "eww close volume_popup"
+    ;; :onhoverlost "eww close volume_popup"
 
 
   (box :class `${name}-popup` :orientation "v" :space-evenly false
