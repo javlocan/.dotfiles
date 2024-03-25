@@ -6,6 +6,26 @@ return {
   {
     'folke/tokyonight.nvim',
     priority = 2000,
+    config = function()
+      require('tokyonight').setup {
+        transparent = true,
+        style = 'night',
+        styles = {
+          comments = { italic = true },
+        },
+      }
+    end,
+  },
+  {
+    'Mofiqul/vscode.nvim',
+    priority = 2000,
+    config = function()
+      require('vscode').setup {
+        transparent = true,
+        italic_comments = true,
+        underline_links = true,
+      }
+    end,
   },
   {
     'sainnhe/gruvbox-material',
@@ -21,21 +41,24 @@ return {
     end,
   },
   {
-    -- Theme inspired by Atom
-    -- 'navarasu/onedark.nvim',
     'olimorris/onedarkpro.nvim',
     priority = 1000,
     config = function()
-      local default = 'onedark'
-      -- UTILS.SET_COLORSCHEME(default)
+      require('onedarkpro').setup {
+        options = {
+          transparency = true,
+        },
+      }
+      local default = 'tokyonight'
       vim.cmd(string.format('colorscheme %s', default))
 
       local colorscheme_augroup = vim.api.nvim_create_augroup('colorscheme', { clear = true })
 
       local colorschemes = {}
-      colorschemes['gruvbox-material'] = { 'rust', 'lua' }
-      colorschemes['onedark'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json' }
-      colorschemes['tokyonight'] = { 'html', 'htmldjango', 'css', 'scss' }
+      colorschemes['tokyonight'] = { 'lua' }
+      colorschemes['gruvbox-material'] = { 'rust' }
+      colorschemes['vscode'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json' }
+      colorschemes['onedark'] = { 'html', 'htmldjango', 'css', 'scss' }
 
       local minicolors = UTILS.BUILD_MINICOLORS_TABLE(colorschemes)
       local colorschemes = UTILS.BUILD_COLORSCHEME_TABLE(colorschemes)

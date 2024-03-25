@@ -13,7 +13,8 @@ return {
         },
       }
 
-      -- vim.keymap.set('n', '<C-q>', [[ command -count Bdel <Cmd>lua UTILS.bufferline.bdel(<count>)<CR> ]])
+      vim.keymap.set('n', '<C-q>', [[ <Cmd>bdelete!<CR> ]])
+      vim.keymap.set('n', '<C-TAB>', [[ <Cmd>bnext<CR> ]])
     end,
   },
 }
