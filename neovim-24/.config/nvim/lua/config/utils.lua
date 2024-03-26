@@ -30,7 +30,9 @@ local SET_COLORSCHEME = function(cs)
 end
 
 local CHECK_AND_SET_COLORSCHEME = function(colorschemes, minicolors, default)
-  local colorscheme = vim.cmd 'colorscheme'
+  local colorscheme = function()
+    return vim.cmd 'colorscheme'
+  end
   local filetype = vim.bo.filetype
 
   local not_in_list = true

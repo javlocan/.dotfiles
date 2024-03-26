@@ -5,10 +5,10 @@ return {
   -- },
   {
     'folke/tokyonight.nvim',
-    priority = 2000,
+    -- priority = 2000,
     config = function()
       require('tokyonight').setup {
-        transparent = true,
+        -- transparent = true,
         style = 'night',
         styles = {
           comments = { italic = true },
@@ -18,10 +18,10 @@ return {
   },
   {
     'Mofiqul/vscode.nvim',
-    priority = 2000,
+    -- priority = 2000,
     config = function()
       require('vscode').setup {
-        transparent = true,
+        -- transparent = true,
         italic_comments = true,
         underline_links = true,
       }
@@ -29,7 +29,7 @@ return {
   },
   {
     'sainnhe/gruvbox-material',
-    priority = 2000,
+    -- priority = 2000,
     config = function()
       vim.g.gruvbox_material_enable_bold = '1'
       vim.g.gruvbox_material_enable_italic = '1'
@@ -42,7 +42,7 @@ return {
   },
   {
     'olimorris/onedarkpro.nvim',
-    priority = 1000,
+    -- priority = 1000,
     config = function()
       require('onedarkpro').setup {
         options = {
