@@ -1,14 +1,8 @@
 return {
-  -- { -- Transparent plugin doesnt work well with colorscheme changes
-  --   'xiyaowong/transparent.nvim',
-  --   lazy = false,
-  -- },
   {
     'folke/tokyonight.nvim',
-    -- priority = 2000,
     config = function()
       require('tokyonight').setup {
-        -- transparent = true,
         style = 'night',
         styles = {
           comments = { italic = true },
@@ -18,10 +12,8 @@ return {
   },
   {
     'Mofiqul/vscode.nvim',
-    -- priority = 2000,
     config = function()
       require('vscode').setup {
-        -- transparent = true,
         italic_comments = true,
         underline_links = true,
       }
@@ -29,7 +21,6 @@ return {
   },
   {
     'sainnhe/gruvbox-material',
-    -- priority = 2000,
     config = function()
       vim.g.gruvbox_material_enable_bold = '1'
       vim.g.gruvbox_material_enable_italic = '1'
@@ -42,14 +33,13 @@ return {
   },
   {
     'olimorris/onedarkpro.nvim',
-    -- priority = 1000,
     config = function()
       require('onedarkpro').setup {
         options = {
-          transparency = true,
+          -- transparency = true,
         },
       }
-      local default = 'tokyonight'
+      local default = 'gruvbox-material'
       vim.cmd(string.format('colorscheme %s', default))
 
       local colorscheme_augroup = vim.api.nvim_create_augroup('colorscheme', { clear = true })

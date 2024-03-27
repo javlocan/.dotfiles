@@ -25,7 +25,7 @@ require('lazy').setup({
   -- { import = 'ui.indent_line' },
   { import = 'ui.git' },
   { import = 'ui.navigation' },
-  { import = 'ui.bufferline' },
+  -- { import = 'ui.bufferline' },
 
   -- NOTE: 1. Comment has basic instructions on initializing plugins
   { import = 'code.comment' },
