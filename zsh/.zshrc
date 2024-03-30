@@ -16,7 +16,6 @@ fi
 
 # colors
 zstyle ':completion:*' list-colors ''
-alias ls="ls --color=auto"
 
 # cool stuff to have
 setopt AUTOCD
@@ -58,7 +57,9 @@ source "/usr/share/fzf/key-bindings.zsh"
 
 # aliases
 alias vim="nvim"
+alias ls="lsd"
 alias k="kubectl"
+
 alias gst="git status"
 alias gss="git status --short"
 alias ga.="git add . && git status --short"
@@ -75,4 +76,4 @@ alias gpsuo="git push --set-upstream origin"
 alias gdf="git diff"
 
 # prompt
-eval "$(starship init zsh)"
+source "$HOME/.config/zsh/purs_setup"
