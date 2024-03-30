@@ -58,6 +58,7 @@ source "/usr/share/fzf/key-bindings.zsh"
 # aliases
 alias vim="nvim"
 alias ls="lsd"
+alias lss="lsd --tree --depth=2 -a"
 alias k="kubectl"
 
 alias gst="git status"
