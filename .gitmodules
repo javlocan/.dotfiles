@@ -1,3 +1,6 @@
 [submodule "zsh/.zsh/purs"]
 	path = zsh/.zsh/purs
 	url = git@github.com:javlocan/purs.git
+[submodule "neovim_setup"]
+	path = neovim
+	url = git@github.com:javlocan/neovim_setup.git
