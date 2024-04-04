@@ -1,6 +1,6 @@
-[submodule "neovim_setup"]
-	path = neovim
-	url = git@github.com:javlocan/neovim_setup.git
 [submodule "terminal"]
 	path = terminal
 	url = git@github.com:javlocan/terminal_setup.git
+[submodule "neovim"]
+	path = neovim
+	url = git@github.com:javlocan/neovim_setup.git
