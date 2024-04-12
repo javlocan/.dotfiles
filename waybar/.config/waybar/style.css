@@ -58,7 +58,8 @@ button:hover {
 
 
 #workspaces button.active {
-  box-shadow: inset 0 -2px #fff;
+  /* box-shadow: inset 0 -2px #fff; */
+  padding-top: 0;
   background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
   border-top: 2px solid #fff;
