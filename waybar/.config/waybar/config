@@ -1,7 +1,7 @@
 {
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 24, // Waybar height (to be removed for auto height)
-    "output":"HDMI-A-1",
+    "output":"DP-3",
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": ["clock", "hyprland/workspaces", "hyprland/mode", "hyprland/scratchpad", "custom/media"],
     "modules-center": [],
