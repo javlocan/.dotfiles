@@ -188,6 +188,7 @@ awful.util.tasklist_buttons = mytable.join(
 )
 
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+
 beautiful.useless_gap = 3
 
 -- }}}
@@ -263,16 +264,16 @@ screen.connect_signal("property::geometry", function(s)
 end)
 
 -- No borders when rearranging only 1 non-floating or maximized client
-screen.connect_signal("arrange", function(s)
-	local only_one = #s.tiled_clients == 1
-	for _, c in pairs(s.clients) do
-		if only_one and not c.floating or c.maximized or c.fullscreen then
-			c.border_width = 0
-		else
-			c.border_width = beautiful.border_width
-		end
-	end
-end)
+-- screen.connect_signal("arrange", function(s)
+-- 	local only_one = #s.tiled_clients == 1
+-- 	for _, c in pairs(s.clients) do
+-- 		if only_one and not c.floating or c.maximized or c.fullscreen then
+-- 			c.border_width = 0
+-- 		else
+-- 			c.border_width = beautiful.border_width
+-- 		end
+-- 	end
+-- end)
 
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s)
@@ -567,7 +568,7 @@ globalkeys = mytable.join(
               {description = "show the menubar", group = "launcher"}),
     --]]
 	-- [[ dmenu
-	awful.key({ super }, "x", function()
+	awful.key({ super }, "d", function()
 		os.execute(
 			string.format(
 				"dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
@@ -591,17 +592,17 @@ globalkeys = mytable.join(
 	-- Prompt
 	awful.key({ super }, "r", function()
 		awful.screen.focused().mypromptbox:run()
-	end, { description = "run prompt", group = "launcher" })
+	end, { description = "run prompt", group = "launcher" }),
 
-	-- awful.key({ modkey }, "x", function()
-	-- 	awful.prompt.run({
-	-- 		prompt = "Run Lua code: ",
-	-- 		textbox = awful.screen.focused().mypromptbox.widget,
-	-- 		exe_callback = awful.util.eval,
-	-- 		history_path = awful.util.get_cache_dir() .. "/history_eval",
-	-- 	})
-	-- end, { description = "lua execute prompt", group = "awesome" })
-	--]]
+	awful.key({ super }, "x", function()
+		awful.prompt.run({
+			prompt = "Run Lua code: ",
+			textbox = awful.screen.focused().mypromptbox.widget,
+			exe_callback = awful.util.eval,
+			history_path = awful.util.get_cache_dir() .. "/history_eval",
+		})
+	end, { description = "lua execute prompt", group = "awesome" })
+	-- ]]
 )
 
 clientkeys = mytable.join(
