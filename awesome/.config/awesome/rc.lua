@@ -99,15 +99,22 @@ local themes = {
 	"vertex", -- 10
 }
 
-local chosen_theme = themes[6]
 local super = "Mod4"
 local alt = "Mod1"
+local ctrl = "Control"
 local shift = "Shift"
+local left = "h"
+local down = "j"
+local up = "k"
+local right = "l"
+
+local chosen_theme = themes[6]
 local terminal = "alacritty"
-local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
-local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
 local browser = "firefox"
+
+local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
+local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
@@ -115,35 +122,29 @@ awful.layout.layouts = {
 	awful.layout.suit.spiral.dwindle,
 	awful.layout.suit.tile,
 	awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
+	-- awful.layout.suit.tile.bottom,
+	-- awful.layout.suit.tile.top,
 	--awful.layout.suit.fair,
-	--awful.layout.suit.fair.horizontal,
+	-- awful.layout.suit.fair.horizontal,
 	--awful.layout.suit.spiral,
 	--awful.layout.suit.max,
 	--awful.layout.suit.max.fullscreen,
 	--awful.layout.suit.magnifier,
-	--awful.layout.suit.corner.nw,
+	-- awful.layout.suit.corner.nw,
 	--awful.layout.suit.corner.ne,
 	--awful.layout.suit.corner.sw,
 	--awful.layout.suit.corner.se,
-	--lain.layout.cascade,
-	--lain.layout.cascade.tile,
-	--lain.layout.centerwork,
-	--lain.layout.centerwork.horizontal,
-	--lain.layout.termfair,
-	--lain.layout.termfair.center
+	lain.layout.centerwork,
+	-- lain.layout.centerwork.horizontal,
+	lain.layout.termfair,
+	-- lain.layout.termfair.center,
 }
 
+-- awful.layout.suit.tile.left
 lain.layout.termfair.nmaster = 3
 lain.layout.termfair.ncol = 1
 lain.layout.termfair.center.nmaster = 3
 lain.layout.termfair.center.ncol = 1
-lain.layout.cascade.tile.offset_x = 2
-lain.layout.cascade.tile.offset_y = 32
-lain.layout.cascade.tile.extra_padding = 5
-lain.layout.cascade.tile.nmaster = 5
-lain.layout.cascade.tile.ncol = 2
 
 awful.util.taglist_buttons = mytable.join(
 	awful.button({}, 1, function(t)
@@ -308,9 +309,9 @@ globalkeys = mytable.join(
 	end, { description = "take a screenshot", group = "hotkeys" }),
 
 	-- X screen locker
-	awful.key({ alt, "Control" }, "l", function()
-		os.execute(scrlocker)
-	end, { description = "lock screen", group = "hotkeys" }),
+	-- awful.key({ alt, "Control" }, "l", function()
+	-- 	os.execute(scrlocker)
+	-- end, { description = "lock screen", group = "hotkeys" }),
 
 	-- Show help
 	awful.key({ super }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
@@ -337,31 +338,38 @@ globalkeys = mytable.join(
 	end, { description = "focus previous by index", group = "client" }),
 
 	-- By-direction client focus
-	awful.key({ super }, "j", function()
-		awful.client.focus.global_bydirection("down")
-		if client.focus then
-			client.focus:raise()
-		end
-	end, { description = "focus down", group = "client" }),
-	awful.key({ super }, "k", function()
-		awful.client.focus.global_bydirection("up")
-		if client.focus then
-			client.focus:raise()
-		end
-	end, { description = "focus up", group = "client" }),
-	awful.key({ super }, "h", function()
+	awful.key({ super }, left, function()
 		awful.client.focus.global_bydirection("left")
 		if client.focus then
 			client.focus:raise()
 		end
 	end, { description = "focus left", group = "client" }),
-	awful.key({ super }, "l", function()
+	awful.key({ super }, down, function()
+		awful.client.focus.global_bydirection("down")
+		if client.focus then
+			client.focus:raise()
+		end
+	end, { description = "focus down", group = "client" }),
+	awful.key({ super }, up, function()
+		awful.client.focus.global_bydirection("up")
+		if client.focus then
+			client.focus:raise()
+		end
+	end, { description = "focus up", group = "client" }),
+	awful.key({ super }, right, function()
 		awful.client.focus.global_bydirection("right")
 		if client.focus then
 			client.focus:raise()
 		end
 	end, { description = "focus right", group = "client" }),
 
+	-- By-direction client move
+	-- awful.key({ super, shift }, left, function()
+	-- 	awful.client.move.global_bydirection("left")
+	-- 	if client.focus then
+	-- 		client.focus:raise()
+	-- 	end
+	-- end, { description = "focus left", group = "client" }),
 	-- Menu
 	awful.key({ super }, "w", function()
 		awful.util.mymainmenu:show()
@@ -636,6 +644,14 @@ clientkeys = mytable.join(
 	end, { description = "minimize", group = "client" }),
 	awful.key({ super }, "m", function(c)
 		c.maximized = not c.maximized
+		c:raise()
+	end, { description = "(un)maximize", group = "client" }),
+	awful.key({ super, ctrl }, "m", function(c)
+		c.maximized_horizontally = not c.maximized_horizontally
+		c:raise()
+	end, { description = "(un)maximize", group = "client" }),
+	awful.key({ super, ctrl }, "%", function(c)
+		c.maximized_vertically = not c.maximized_vertically
 		c:raise()
 	end, { description = "(un)maximize", group = "client" })
 )
