@@ -22,6 +22,7 @@ local bar = function(s)
     screen = s,
     bg = '#0000',
   }
+  s.promptbox = awful.widget.prompt()
   wb:setup {
     {
       {
@@ -30,7 +31,7 @@ local bar = function(s)
           layout = wibox.layout.align.horizontal,
           layoutbox(s),
           taglist(s),
-          awful.widget.prompt(),
+          s.promptbox,
         },
         nil,
         {
