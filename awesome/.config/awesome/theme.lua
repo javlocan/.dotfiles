@@ -94,7 +94,7 @@ theme.titlebar_maximized_button_normal_active = theme.dir .. '/icons/titlebar/ma
 theme.titlebar_maximized_button_focus_inactive = theme.dir .. '/icons/titlebar/maximized_focus_inactive.png'
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. '/icons/titlebar/maximized_normal_inactive.png'
 
-local bar = require 'bar.bar'
+local bar = require 'bar'
 
 local function set_wallpaper(s)
   -- Wallpaper
