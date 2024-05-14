@@ -70,7 +70,7 @@ local function run_once(cmd_arr)
 	end
 end
 
-run_once({ "redshift", "picom", "xclipboard" }) -- comma-separated entries
+run_once({ "redshift", "picom", "xclipd", "setxkbmap custom" }) -- comma-separated entries
 
 -- This function implements the XDG autostart specification
 --[[
