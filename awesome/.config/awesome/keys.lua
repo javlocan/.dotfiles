@@ -1,24 +1,19 @@
+local naughty = require 'naughty'
+local beautiful = require 'beautiful'
 local gears = require 'gears'
 local awful = require 'awful'
+
 require 'awful.hotkeys_popup.keys'
 local hotkeys_popup = require 'awful.hotkeys_popup'
-
-local beautiful = require 'beautiful'
-local naughty = require 'naughty'
-
-local lain = require 'lain'
 
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 
 local terminal = 'alacritty'
--- local terminal2 = 'wezterm'
-local editor = os.getenv 'EDITOR' or 'nvim'
 local browser = 'firefox'
+local editor = os.getenv 'EDITOR' or 'nvim'
 
 local lain = require 'lain'
---local menubar       = require("menubar")
-local freedesktop = require 'freedesktop'
 
 local super = 'Mod4'
 local alt = 'Mod1'
@@ -226,21 +221,21 @@ globalkeys = mytable.join(
   end, { description = 'dropdown application', group = 'launcher' }),
 
   -- Widgets popups
-  awful.key({ alt }, 'c', function()
-    if beautiful.cal then
-      beautiful.cal.show(7)
-    end
-  end, { description = 'show calendar', group = 'widgets' }),
-  awful.key({ alt }, 'h', function()
-    if beautiful.fs then
-      beautiful.fs.show(7)
-    end
-  end, { description = 'show filesystem', group = 'widgets' }),
-  awful.key({ alt }, 'w', function()
-    if beautiful.weather then
-      beautiful.weather.show(7)
-    end
-  end, { description = 'show weather', group = 'widgets' }),
+  -- awful.key({ alt }, 'c', function()
+  --   if beautiful.cal then
+  --     beautiful.cal.show(7)
+  --   end
+  -- end, { description = 'show calendar', group = 'widgets' }),
+  -- awful.key({ alt }, 'h', function()
+  --   if beautiful.fs then
+  --     beautiful.fs.show(7)
+  --   end
+  -- end, { description = 'show filesystem', group = 'widgets' }),
+  -- awful.key({ alt }, 'w', function()
+  --   if beautiful.weather then
+  --     beautiful.weather.show(7)
+  --   end
+  -- end, { description = 'show weather', group = 'widgets' }),
 
   -- Screen brightness
   awful.key({}, 'XF86MonBrightnessUp', function()

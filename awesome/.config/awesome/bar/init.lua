@@ -1,19 +1,16 @@
 local awful = require 'awful'
-local beautiful = require 'beautiful'
 local wibox = require 'wibox'
-local gears = require 'gears'
 
 local taglist = require 'bar/widgets/taglist'
 local clock = require 'bar/widgets/clock'
 local tasklist = require 'bar/widgets/tasklist'
-local tray = require 'bar/widgets/tray'
+-- local tray = require 'bar/widgets/tray'
+
+require('beautiful').systray_icon_spacing = 4
+local tray = wibox.widget.systray()
 
 -- Keyboard map indicator and switcher
 local layoutbox = awful.widget.layoutbox
-local prompt = awful.widget.prompt { with_shell = true, prompt = 'Run: ' }
--- globalkeys = gears.table.join(globalkeys,
---
--- )
 
 local bar = function(s)
   local wb = awful.wibar {
@@ -29,7 +26,6 @@ local bar = function(s)
         layout = wibox.layout.align.horizontal,
         {
           layout = wibox.layout.align.horizontal,
-          layoutbox(s),
           taglist(s),
           s.promptbox,
         },
@@ -37,6 +33,7 @@ local bar = function(s)
         {
           layout = wibox.layout.align.horizontal,
           clock,
+          layoutbox(s),
           tray,
         },
       },
