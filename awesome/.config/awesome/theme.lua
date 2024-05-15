@@ -113,7 +113,7 @@ screen.connect_signal('property::geometry', set_wallpaper)
 function theme.at_screen_connect(s)
   set_wallpaper(s)
   bar(s)
-  awful.tag({ '1', '2', '3', '4', '5', '6' }, s, awful.layout.layouts[1])
+  awful.tag({ '1', '2', '3', '4', '5' }, s, awful.layout.layouts[1])
 end
 
 return theme

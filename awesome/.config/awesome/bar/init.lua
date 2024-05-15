@@ -36,6 +36,7 @@ local bar = function(s)
         nil,
         {
           layout = wibox.layout.align.horizontal,
+          layoutbox(s),
           clock,
           tray,
         },
