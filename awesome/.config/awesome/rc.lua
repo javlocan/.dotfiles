@@ -21,10 +21,16 @@ local screen = require 'screen'
 -- local window = require 'window'
 local config = require 'config'
 
--- ORDER IS IMPORTANT
+-- NOTE: ORDER IS IMPORTANT
 -- SO... WHAT TO DO?
 -- Necesito una justificacion o sistematizacion
 -- de algún tipo para el orden
+-- FIX: Quizá si voy pasando lo que
+-- voy generando queda claro el orden
+-- por sí solo. No sé siquiera si se
+-- puede. Entonces el estado donde?
+-- Es realmente un estado?
+
 start:handle_awesome_errors()
 start:run_once()
 screen:set_layout()
