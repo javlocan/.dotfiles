@@ -37,10 +37,8 @@ M.handle_awesome_errors = function()
   end
 end
 
-M.__cmd_list = config.autostart_cmd_list
-
-M.run_once = function(self)
-  local cmd_arr = self.__cmd_list
+M.run_once = function()
+  local cmd_arr = config.autostart_cmd_list
   for _, cmd in ipairs(cmd_arr) do
     awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
   end

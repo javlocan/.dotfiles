@@ -6,7 +6,7 @@ local gears = require 'gears'
 local taglist = require 'bar/widgets/taglist'
 local clock = require 'bar/widgets/clock'
 local tasklist = require 'bar/widgets/tasklist'
-local tray = require 'bar/widgets/tray'
+-- local tray = require 'bar/widgets/tray'
 
 -- Keyboard map indicator and switcher
 local layoutbox = awful.widget.layoutbox
@@ -22,7 +22,12 @@ local bar = function(s)
     screen = s,
     bg = '#0000',
   }
+
   s.promptbox = awful.widget.prompt()
+
+  s.tray = wibox.widget.systray()
+  s.tray:set_screen(screen[screen.count()])
+
   wb:setup {
     {
       {
@@ -36,9 +41,9 @@ local bar = function(s)
         nil,
         {
           layout = wibox.layout.align.horizontal,
-          layoutbox(s),
+          -- layoutbox(s),
           clock,
-          tray,
+          s.tray,
         },
       },
       {
