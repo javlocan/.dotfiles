@@ -65,15 +65,4 @@ M.set_signals = function()
   end)
 end
 
-M.set_theme = function()
-  require 'awful.autofocus'
-  awful.util.terminal = C.terminal
-  awful.util.tagnames = { '1', '2', '3', '4', '5' }
-
-  beautiful.init(C.conf_dir .. '/theme.lua')
-  awful.screen.connect_for_each_screen(function(s)
-    beautiful.at_screen_connect(s)
-  end)
-end
-
 return M

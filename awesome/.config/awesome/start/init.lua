@@ -1,6 +1,9 @@
 local awful = require 'awful'
 local naughty = require 'naughty'
+local beautiful = require 'beautiful'
+
 local config = require 'config'
+local C = config.const
 
 local M = {}
 
@@ -41,6 +44,17 @@ M.run_once = function(self)
   for _, cmd in ipairs(cmd_arr) do
     awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
   end
+end
+
+M.set_theme = function()
+  require 'awful.autofocus'
+  awful.util.terminal = C.terminal
+  awful.util.tagnames = { '1', '2', '3', '4', '5' }
+
+  beautiful.init(C.conf_dir .. '/theme.lua')
+  awful.screen.connect_for_each_screen(function(s)
+    beautiful.at_screen_connect(s)
+  end)
 end
 
 return M

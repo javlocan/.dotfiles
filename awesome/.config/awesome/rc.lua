@@ -21,14 +21,18 @@ local screen = require 'screen'
 -- local window = require 'window'
 local config = require 'config'
 
+-- ORDER IS IMPORTANT
+-- SO... WHAT TO DO?
+-- Necesito una justificacion o sistematizacion
+-- de algún tipo para el orden
 start:handle_awesome_errors()
 start:run_once()
-keys:set()
-rules:set()
 screen:set_layout()
 screen:set_taglist()
 screen:set_tasklist()
 screen:set_menu()
+start:set_theme()
+keys:set()
+rules:set()
 -- window:set_titlebars()
 config:set_signals()
-config:set_theme()
