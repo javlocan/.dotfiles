@@ -17,7 +17,7 @@ pcall(require, 'luarocks.loader')
 local start = require 'start'
 local rules = require 'rules'
 local keys = require 'keys'
-local mscreen = require 'screen'
+local mscreen = require 'mscreen'
 -- local window = require 'window'
 local config = require 'config'
 
