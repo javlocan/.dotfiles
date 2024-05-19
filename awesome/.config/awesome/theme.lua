@@ -2,13 +2,12 @@ local beautiful = require 'beautiful'
 local gears = require 'gears'
 local awful = require 'awful'
 local dpi = require('beautiful.xresources').apply_dpi
-local _, os = math, os
 
-local c = require 'confy.configuration.const'
+local const = require 'confy.configuration.const'
 
 local theme = {}
 
-theme.dir = c.misc.theme_dir
+theme.dir = const.misc.theme_dir
 theme.wallpaper = theme.dir .. '/background'
 theme.font = 'mono 9'
 
