@@ -43,10 +43,6 @@ M.run_once = function()
   end
 end
 
-M.set_layout = function()
-  awful.layout.layouts = c.layout_list
-end
-
 local mytable = c.misc.mytable
 local k = c.keys
 
@@ -102,8 +98,8 @@ M.set_theme = function()
   awful.util.tagnames = { '1', '2', '3', '4', '5' }
 
   -- beautiful.init(c.misc.theme_dir .. '/init.lua')
-  -- beautiful.init(c.misc.theme_dir .. '.lua')
-  beautiful.init '/home/javlocan/.config/awesome/theme.lua'
+  beautiful.init(c.misc.conf_dir .. '/theme.lua')
+  -- beautiful.init '/home/javlocan/.config/awesome/theme.lua'
 
   awful.screen.connect_for_each_screen(function(s)
     beautiful.at_screen_connect(s)

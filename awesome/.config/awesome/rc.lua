@@ -14,7 +14,7 @@ pcall(require, 'luarocks.loader')
 -- local root = root
 -- local client = client
 
-local start = require 'start'
+local mstart = require 'start'
 local rules = require 'rules'
 local keys = require 'keys'
 local mscreen = require 'mscreen'
@@ -31,12 +31,13 @@ local config = require 'config'
 -- puede. Entonces el estado donde?
 -- Es realmente un estado?
 
-start:handle_awesome_errors()
-start:run_once()
-mscreen:set_layout()
+require 'confy'
+-- mstart:handle_awesome_errors()
+-- mstart:run_once()
+-- mscreen:set_layout()
 mscreen:set_taglist()
 mscreen:set_tasklist()
-start:set_theme()
+mstart:set_theme()
 mscreen:set_menu()
 keys:set()
 rules:set()
@@ -48,37 +49,37 @@ config:set_signals()
 -- que tag esta en qué escritorio. A lo mejor aún quiero separarlas
 -- por numeros.
 
-awesome.connect_signal('exit', function(reason_restart)
-  if not reason_restart then
-    return
-  end
-
-  local file = io.open('/tmp/awesomewm-last-selected-tags', 'w+')
-
-  for s in screen do
-    file:write(s.selected_tag.index, '\n')
-  end
-
-  file:close()
-end)
-
-awesome.connect_signal('startup', function()
-  local file = io.open('/tmp/awesomewm-last-selected-tags', 'r')
-  if not file then
-    return
-  end
-
-  local selected_tags = {}
-
-  for line in file:lines() do
-    table.insert(selected_tags, tonumber(line))
-  end
-
-  for s in screen do
-    local i = selected_tags[s.index]
-    local t = s.tags[i]
-    t:view_only()
-  end
-
-  file:close()
-end)
+-- awesome.connect_signal('exit', function(reason_restart)
+--   if not reason_restart then
+--     return
+--   end
+--
+--   local file = io.open('/tmp/awesomewm-last-selected-tags', 'w+')
+--
+--   for s in screen do
+--     file:write(s.selected_tag.index, '\n')
+--   end
+--
+--   file:close()
+-- end)
+--
+-- awesome.connect_signal('startup', function()
+--   local file = io.open('/tmp/awesomewm-last-selected-tags', 'r')
+--   if not file then
+--     return
+--   end
+--
+--   local selected_tags = {}
+--
+--   for line in file:lines() do
+--     table.insert(selected_tags, tonumber(line))
+--   end
+--
+--   for s in screen do
+--     local i = selected_tags[s.index]
+--     local t = s.tags[i]
+--     t:view_only()
+--   end
+--
+--   file:close()
+-- end)

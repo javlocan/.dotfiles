@@ -4,9 +4,11 @@ local awful = require 'awful'
 local dpi = require('beautiful.xresources').apply_dpi
 local _, os = math, os
 
+local c = require 'confy.configuration.const'
+
 local theme = {}
 
-theme.dir = os.getenv 'HOME' .. '/.config/awesome/theme'
+theme.dir = c.misc.theme_dir
 theme.wallpaper = theme.dir .. '/background'
 theme.font = 'mono 9'
 

@@ -4,6 +4,7 @@ local gears = require 'gears'
 
 local const = require 'confy.configuration.const'
 local start = require 'confy.configuration.start'
+local layout = require 'confy.configuration.layout'
 local keys = require 'confy.configuration.keys'
 local rules = require 'confy.configuration.rules'
 
@@ -12,16 +13,17 @@ local M = {}
 M.autostart = function()
   start:handle_awesome_errors()
   start:run_once()
+  layout:set()
   -- TODO: Maybe this set_whatev can be whatev:set instead
   -- they are not really starting things.
   -- They should be run in another funcion(s)
-  start:set_layout()
-  start:set_taglist()
-  start:set_tasklist()
-  start:set_theme()
-
-  keys:set()
-  rules:set()
+  -- start:set_layout()
+  -- start:set_taglist()
+  -- start:set_tasklist()
+  -- start:set_theme()
+  --
+  -- keys:set()
+  -- rules:set()
 end
 
 M.set_signals = function()
