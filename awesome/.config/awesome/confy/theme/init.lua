@@ -3,7 +3,7 @@ local beautiful = require 'beautiful'
 
 local const = require 'confy.configuration.const'
 local wallpaper = require 'confy.theme.wallpaper'
-local bar = require 'confy.bar'
+local bar = require 'confy.theme.bar'
 
 local M = {}
 
