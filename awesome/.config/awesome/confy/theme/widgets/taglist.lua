@@ -29,7 +29,7 @@ local taglist = function(s)
     end)
   )
 
-  mytaglist = awful.widget.taglist {
+  local mytaglist = awful.widget.taglist {
     screen = s,
     filter = awful.widget.taglist.filter.all,
     style = { shape = gears.shape.circle },
@@ -78,7 +78,7 @@ local taglist = function(s)
     },
     buttons = taglist_buttons,
   }
-  mytaglist_with_margins = wibox.widget {
+  local mytaglist_with_margins = wibox.widget {
     {
       {
         mytaglist,

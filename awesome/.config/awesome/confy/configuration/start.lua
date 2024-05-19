@@ -92,18 +92,4 @@ M.set_tasklist = function()
   )
 end
 
-M.set_theme = function()
-  require 'awful.autofocus'
-  awful.util.terminal = c.misc.terminal
-  awful.util.tagnames = { '1', '2', '3', '4', '5' }
-
-  -- beautiful.init(c.misc.theme_dir .. '/init.lua')
-  beautiful.init(c.misc.conf_dir .. '/theme.lua')
-  -- beautiful.init '/home/javlocan/.config/awesome/theme.lua'
-
-  awful.screen.connect_for_each_screen(function(s)
-    beautiful.at_screen_connect(s)
-  end)
-end
-
 return M

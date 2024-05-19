@@ -14,24 +14,10 @@ M.autostart = function()
   -- they are not really starting things.
   -- They should be run in another funcion(s)
   start:set_taglist()
-  start:set_tasklist()
+  -- start:set_tasklist()
 end
 
-M.set_theme = function()
-  require 'awful.autofocus'
-  awful.util.terminal = const.misc.terminal
-  awful.util.tagnames = { '1', '2', '3', '4', '5' }
-
-  -- beautiful.init(c.misc.theme_dir .. '/init.lua')
-  beautiful.init(const.misc.conf_dir .. '/confy/theme/theme.lua')
-  -- beautiful.init '/home/javlocan/.config/awesome/theme.lua'
-
-  awful.screen.connect_for_each_screen(function(s)
-    beautiful.at_screen_connect(s)
-  end)
-end
-
-M.set_signals = function()
+local set_signals = function()
   -- Enable sloppy focus, so that focus follows mouse.
   client.connect_signal('mouse::enter', function(c)
     c:emit_signal('request::activate', 'mouse_enter', { raise = const.misc.vi_focus })
@@ -100,5 +86,34 @@ M.set_signals = function()
     file:close()
   end)
 end
+
+M.set_signals = set_signals
+
+local keys = require 'confy.keys'
+
+M.extend_globals = function()
+  -- awesome.connect = set_signals
+  root.set = {}
+  root.set.keys = function(self, new_keys)
+    new_keys = keys.build_global_tag_navigation(new_keys)
+    root.keys = new_keys
+  end
+
+  root.set.buttons = function(self, buttons)
+    root.buttons(buttons)
+  end
+end
+
+local keys = require 'confy.configuration.keys'
+
+M.keys = {
+  client = keys.client,
+  global = keys.global,
+}
+
+M.buttons = {
+  client = keys.clientbuttons,
+  global = keys.globalbuttons,
+}
 
 return M
