@@ -6,6 +6,20 @@ local M = {}
 
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 
+local home = os.getenv 'HOME'
+local config = home .. '/.config/awesome'
+local confy = config .. '/confy'
+
+M.dir = {
+  config = config,
+  theme = confy .. '/theme',
+  assets = confy .. '/theme/assets',
+}
+
+M.file = {
+  styles = M.dir.theme .. '/styles.lua',
+}
+
 M.misc = {
   mytable = mytable,
   vi_focus = false, -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
