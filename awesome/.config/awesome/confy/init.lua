@@ -1,12 +1,15 @@
-local conf = require 'confy.configuration'
-local theme = require 'confy.theme'
+local confy = require 'confy.configuration'
 local layout = require 'confy.layout'
+
+local theme = require 'confy.theme'
 local menu = require 'confy.theme.menu'
 
-conf:autostart()
-conf:set_keys()
-conf:set_rules()
+confy:autostart()
+confy:set_keys()
+confy:set_rules()
 layout:set()
+
 theme:set()
 menu:set()
-conf:set_signals()
+
+confy:set_signals()

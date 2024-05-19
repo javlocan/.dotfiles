@@ -4,8 +4,8 @@ local gears = require 'gears'
 
 local const = require 'confy.configuration.const'
 
-local up = const.misc.theme_dir .. '/bar/widgets/svgs/arrow_up.svg'
-local down = const.misc.theme_dir .. 'bar/widgets/svgs/arrow_down.svg'
+local up = const.misc.theme_dir .. 'confy/theme/bar/widgets/svgs/arrow_up.svg'
+local down = const.misc.theme_dir .. 'confy/theme/bar/widgets/svgs/arrow_down.svg'
 
 local status = wibox.widget {
   image = down,

@@ -17,8 +17,6 @@ M.autostart = function()
   -- They should be run in another funcion(s)
   start:set_taglist()
   start:set_tasklist()
-  -- start:set_theme()
-  --
 end
 
 M.set_keys = keys.set
@@ -82,6 +80,9 @@ M.set_signals = function()
 
     file:close()
   end)
+
+  -- local wallpaper = require 'confy.theme.wallpaper'
+  -- screen.connect_signal('property::geometry', wallpaper:set)
 
   awesome.connect_signal('startup', function()
     local file = io.open('/tmp/awesomewm-last-selected-tags', 'r')

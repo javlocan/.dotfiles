@@ -15,7 +15,7 @@ local prompt = awful.widget.prompt { with_shell = true, prompt = 'Run: ' }
 --
 -- )
 
-local bar = function(s)
+local bar = function(_, s)
   local wb = awful.wibar {
     position = 'top',
     height = 23,
@@ -61,4 +61,5 @@ local bar = function(s)
   }
 end
 
-return bar
+-- return bar
+return { set = bar }
