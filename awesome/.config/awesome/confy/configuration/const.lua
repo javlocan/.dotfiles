@@ -13,6 +13,7 @@ M.misc = {
   theme_dir = os.getenv 'HOME' .. '/.config/awesome/confy/theme',
   -- conf_dir = os.getenv 'HOME' .. '/.config/awesome',
   terminal = 'alacritty',
+  browser = 'firefox',
   editor = os.getenv 'EDITOR' or 'nvim',
 }
 

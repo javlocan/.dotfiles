@@ -17,13 +17,27 @@ M.autostart = function()
   -- TODO: Maybe this set_whatev can be whatev:set instead
   -- they are not really starting things.
   -- They should be run in another funcion(s)
-  -- start:set_layout()
-  -- start:set_taglist()
-  -- start:set_tasklist()
+  start:set_taglist()
+  start:set_tasklist()
   -- start:set_theme()
   --
-  -- keys:set()
-  -- rules:set()
+end
+
+M.set_keys = keys.set
+M.set_rules = rules.set
+
+M.set_theme = function()
+  require 'awful.autofocus'
+  awful.util.terminal = const.misc.terminal
+  awful.util.tagnames = { '1', '2', '3', '4', '5' }
+
+  -- beautiful.init(c.misc.theme_dir .. '/init.lua')
+  beautiful.init(const.misc.conf_dir .. '/theme.lua')
+  -- beautiful.init '/home/javlocan/.config/awesome/theme.lua'
+
+  awful.screen.connect_for_each_screen(function(s)
+    beautiful.at_screen_connect(s)
+  end)
 end
 
 M.set_signals = function()
@@ -56,41 +70,41 @@ M.set_signals = function()
       awful.placement.no_offscreen(c)
     end
   end)
-end
 
--- awesome.connect_signal('exit', function(reason_restart)
---   if not reason_restart then
---     return
---   end
---
---   local file = io.open('/tmp/awesomewm-last-selected-tags', 'w+')
---
---   for s in screen do
---     file:write(s.selected_tag.index, '\n')
---   end
---
---   file:close()
--- end)
---
--- awesome.connect_signal('startup', function()
---   local file = io.open('/tmp/awesomewm-last-selected-tags', 'r')
---   if not file then
---     return
---   end
---
---   local selected_tags = {}
---
---   for line in file:lines() do
---     table.insert(selected_tags, tonumber(line))
---   end
---
---   for s in screen do
---     local i = selected_tags[s.index]
---     local t = s.tags[i]
---     t:view_only()
---   end
---
---   file:close()
--- end)
+  awesome.connect_signal('exit', function(reason_restart)
+    if not reason_restart then
+      return
+    end
+
+    local file = io.open('/tmp/awesomewm-last-selected-tags', 'w+')
+
+    for s in screen do
+      file:write(s.selected_tag.index, '\n')
+    end
+
+    file:close()
+  end)
+
+  awesome.connect_signal('startup', function()
+    local file = io.open('/tmp/awesomewm-last-selected-tags', 'r')
+    if not file then
+      return
+    end
+
+    local selected_tags = {}
+
+    for line in file:lines() do
+      table.insert(selected_tags, tonumber(line))
+    end
+
+    for s in screen do
+      local i = selected_tags[s.index]
+      local t = s.tags[i]
+      t:view_only()
+    end
+
+    file:close()
+  end)
+end
 
 return M
