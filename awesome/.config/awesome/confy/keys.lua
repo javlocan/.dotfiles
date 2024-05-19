@@ -9,10 +9,6 @@ local hotkeys_popup = require 'awful.hotkeys_popup'
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 
-local terminal = 'alacritty'
-local browser = 'firefox'
-local editor = os.getenv 'EDITOR' or 'nvim'
-
 local lain = require 'lain'
 
 local const = require 'confy.configuration.const'

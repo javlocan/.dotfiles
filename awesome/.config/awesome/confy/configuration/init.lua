@@ -4,8 +4,6 @@ local gears = require 'gears'
 
 local const = require 'confy.configuration.const'
 local start = require 'confy.configuration.start'
-local keys = require 'confy.configuration.keys'
-local rules = require 'confy.configuration.rules'
 
 local M = {}
 
@@ -18,9 +16,6 @@ M.autostart = function()
   start:set_taglist()
   start:set_tasklist()
 end
-
-M.set_keys = keys.set
-M.set_rules = rules.set
 
 M.set_theme = function()
   require 'awful.autofocus'

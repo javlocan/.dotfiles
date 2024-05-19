@@ -10,6 +10,12 @@ local home = os.getenv 'HOME'
 local config = home .. '/.config/awesome'
 local confy = config .. '/confy'
 
+-- TODO: THIS FILE IS CENTRAL
+-- Maybe will take all this from .toml with build_from_toml() fn
+
+M.keys = {}
+M.keys.global = {}
+
 M.dir = {
   config = config,
   theme = confy .. '/theme',
@@ -18,6 +24,12 @@ M.dir = {
 
 M.file = {
   styles = M.dir.theme .. '/styles.lua',
+}
+
+-- TODO: To use in theme/init.lua
+M.theme = {
+  bar = true,
+  menu = true,
 }
 
 M.misc = {
@@ -30,8 +42,6 @@ M.misc = {
   browser = 'firefox',
   editor = os.getenv 'EDITOR' or 'nvim',
 }
-
-require('naughty').notify { text = M.misc.theme_dir .. '.lua' }
 
 M.keys = {
   super = 'Mod4',
