@@ -8,7 +8,7 @@ local const = require 'confy.configuration.const'
 local theme = {}
 
 theme.dir = const.misc.theme_dir
-theme.wallpaper = theme.dir .. '/background'
+theme.wallpaper = theme.dir .. '/background.png'
 theme.font = 'mono 9'
 
 theme.fg_normal = '#FEFEFE'
@@ -115,7 +115,7 @@ theme.notification_max_width = dpi(240)
 theme.notification_max_height = dpi(120)
 -- theme.notification_icon_size = dpi
 
-local bar = require 'bar'
+local bar = require 'confy.bar'
 
 local function set_wallpaper(s)
   -- Wallpaper

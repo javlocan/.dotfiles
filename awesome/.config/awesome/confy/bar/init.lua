@@ -3,9 +3,9 @@ local beautiful = require 'beautiful'
 local wibox = require 'wibox'
 local gears = require 'gears'
 
-local taglist = require 'bar/widgets/taglist'
-local clock = require 'bar/widgets/clock'
-local tasklist = require 'bar/widgets/tasklist'
+local taglist = require 'confy/bar/widgets/taglist'
+local clock = require 'confy/bar/widgets/clock'
+local tasklist = require 'confy/bar/widgets/tasklist'
 -- local tray = require 'bar/widgets/tray'
 
 -- Keyboard map indicator and switcher
