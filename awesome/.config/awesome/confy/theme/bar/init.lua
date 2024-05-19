@@ -1,25 +1,27 @@
 local awful = require 'awful'
 local wibox = require 'wibox'
 
-local taglist = require 'bar/widgets/taglist'
-local clock = require 'bar/widgets/clock'
-local tasklist = require 'bar/widgets/tasklist'
+local taglist = require 'confy/theme/bar/widgets/taglist'
+local clock = require 'confy/theme/bar/widgets/clock'
+local tasklist = require 'confy/theme/bar/widgets/tasklist'
 -- local tray = require 'bar/widgets/tray'
-
-require('beautiful').systray_icon_spacing = 4
-local tray = wibox.widget.systray()
 
 -- Keyboard map indicator and switcher
 local layoutbox = awful.widget.layoutbox
 
-local bar = function(s)
+local bar = function(_, s)
   local wb = awful.wibar {
     position = 'top',
     height = 23,
     screen = s,
     bg = '#0000',
   }
+
   s.promptbox = awful.widget.prompt()
+
+  s.tray = wibox.widget.systray()
+  s.tray:set_screen(screen[screen.count()])
+
   wb:setup {
     {
       {
@@ -32,9 +34,9 @@ local bar = function(s)
         nil,
         {
           layout = wibox.layout.align.horizontal,
+          -- layoutbox(s),
           clock,
-          layoutbox(s),
-          tray,
+          s.tray,
         },
       },
       {
@@ -52,4 +54,5 @@ local bar = function(s)
   }
 end
 
-return bar
+-- return bar
+return { set = bar }

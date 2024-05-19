@@ -15,29 +15,75 @@ local editor = os.getenv 'EDITOR' or 'nvim'
 
 local lain = require 'lain'
 
-local super = 'Mod4'
-local alt = 'Mod1'
-local ctrl = 'Control'
-local shift = 'Shift'
-local left = 'h'
-local down = 'j'
-local up = 'k'
-local right = 'l'
+local const = require 'confy.configuration.const'
+local k = const.keys
 
--- {{{ Mouse bindings
+local super = k.super
+local alt = k.alt
+local ctrl = k.ctrl
+local shift = k.shift
+local left = k.left
+local down = k.down
+local up = k.up
+local right = k.right
 
-root.buttons(mytable.join(
-  awful.button({}, 3, function()
-    awful.util.mymainmenu:toggle()
+local browser = const.misc.browser
+local terminal = const.misc.terminal
+
+local M = {}
+
+M.clientbuttons = mytable.join(
+  awful.button({}, 1, function(c)
+    c:emit_signal('request::activate', 'mouse_click', { raise = true })
   end),
-  awful.button({}, 4, awful.tag.viewnext),
-  awful.button({}, 5, awful.tag.viewprev)
-))
+  awful.button({ super }, 1, function(c)
+    c:emit_signal('request::activate', 'mouse_click', { raise = true })
+    awful.mouse.client.move(c)
+  end),
+  awful.button({ super }, 3, function(c)
+    c:emit_signal('request::activate', 'mouse_click', { raise = true })
+    awful.mouse.client.resize(c)
+  end)
+)
+M.client = mytable.join(
+  awful.key({ alt, 'Shift' }, 'm', lain.util.magnify_client, { description = 'magnify client', group = 'client' }),
+  awful.key({ super }, 'f', function(c)
+    c.fullscreen = not c.fullscreen
+    c:raise()
+  end, { description = 'toggle fullscreen', group = 'client' }),
+  awful.key({ super }, 'q', function(c)
+    c:kill()
+  end, { description = 'close', group = 'client' }),
+  awful.key({ super, 'Control' }, 'space', awful.client.floating.toggle, { description = 'toggle floating', group = 'client' }),
+  awful.key({ super, 'Control' }, 'Return', function(c)
+    c:swap(awful.client.getmaster())
+  end, { description = 'move to master', group = 'client' }),
+  awful.key({ super, 'Shift' }, 'o', function(c)
+    c:move_to_screen()
+  end, { description = 'move to screen', group = 'client' }),
+  awful.key({ super }, 't', function(c)
+    c.ontop = not c.ontop
+  end, { description = 'toggle keep on top', group = 'client' }),
+  awful.key({ super }, 'n', function(c)
+    -- The client currently has the input focus, so it cannot be
+    -- minimized, since minimized clients can't have the focus.
+    c.minimized = true
+  end, { description = 'minimize', group = 'client' }),
+  awful.key({ super }, 'm', function(c)
+    c.maximized = not c.maximized
+    c:raise()
+  end, { description = '(un)maximize', group = 'client' }),
+  awful.key({ super, ctrl }, 'm', function(c)
+    c.maximized_horizontally = not c.maximized_horizontally
+    c:raise()
+  end, { description = '(un)maximize', group = 'client' }),
+  awful.key({ super, ctrl }, '%', function(c)
+    c.maximized_vertically = not c.maximized_vertically
+    c:raise()
+  end, { description = '(un)maximize', group = 'client' })
+)
 
--- }}}
--- {{{ Key bindings
-
-globalkeys = mytable.join(
+M.global = mytable.join(
   -- Destroy all notifications
   awful.key({ 'Control' }, 'space', function()
     naughty.destroy_all_notifications()
@@ -353,102 +399,65 @@ globalkeys = mytable.join(
   -- ]]
 )
 
-clientkeys = mytable.join(
-  awful.key({ alt, 'Shift' }, 'm', lain.util.magnify_client, { description = 'magnify client', group = 'client' }),
-  awful.key({ super }, 'f', function(c)
-    c.fullscreen = not c.fullscreen
-    c:raise()
-  end, { description = 'toggle fullscreen', group = 'client' }),
-  awful.key({ super }, 'q', function(c)
-    c:kill()
-  end, { description = 'close', group = 'client' }),
-  awful.key({ super, 'Control' }, 'space', awful.client.floating.toggle, { description = 'toggle floating', group = 'client' }),
-  awful.key({ super, 'Control' }, 'Return', function(c)
-    c:swap(awful.client.getmaster())
-  end, { description = 'move to master', group = 'client' }),
-  awful.key({ super, 'Shift' }, 'o', function(c)
-    c:move_to_screen()
-  end, { description = 'move to screen', group = 'client' }),
-  awful.key({ super }, 't', function(c)
-    c.ontop = not c.ontop
-  end, { description = 'toggle keep on top', group = 'client' }),
-  awful.key({ super }, 'n', function(c)
-    -- The client currently has the input focus, so it cannot be
-    -- minimized, since minimized clients can't have the focus.
-    c.minimized = true
-  end, { description = 'minimize', group = 'client' }),
-  awful.key({ super }, 'm', function(c)
-    c.maximized = not c.maximized
-    c:raise()
-  end, { description = '(un)maximize', group = 'client' }),
-  awful.key({ super, ctrl }, 'm', function(c)
-    c.maximized_horizontally = not c.maximized_horizontally
-    c:raise()
-  end, { description = '(un)maximize', group = 'client' }),
-  awful.key({ super, ctrl }, '%', function(c)
-    c.maximized_vertically = not c.maximized_vertically
-    c:raise()
-  end, { description = '(un)maximize', group = 'client' })
-)
-
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
-  globalkeys = mytable.join(
-    globalkeys,
-    -- View tag only.
-    awful.key({ super }, '#' .. i + 9, function()
-      local screen = awful.screen.focused()
-      local tag = screen.tags[i]
-      if tag then
-        tag:view_only()
-      end
-    end, { description = 'view tag #' .. i, group = 'tag' }),
-    -- Toggle tag display.
-    awful.key({ super, 'Control' }, '#' .. i + 9, function()
-      local screen = awful.screen.focused()
-      local tag = screen.tags[i]
-      if tag then
-        awful.tag.viewtoggle(tag)
-      end
-    end, { description = 'toggle tag #' .. i, group = 'tag' }),
-    -- Move client to tag.
-    awful.key({ super, 'Shift' }, '#' .. i + 9, function()
-      if client.focus then
-        local tag = client.focus.screen.tags[i]
+local build_global_tag_navigation = function()
+  for i = 1, 9 do
+    M.global = mytable.join(
+      M.global,
+      -- View tag only.
+      awful.key({ super }, '#' .. i + 9, function()
+        local screen = awful.screen.focused()
+        local tag = screen.tags[i]
         if tag then
-          client.focus:move_to_tag(tag)
+          tag:view_only()
         end
-      end
-    end, { description = 'move focused client to tag #' .. i, group = 'tag' }),
-    -- Toggle tag on focused client.
-    awful.key({ super, 'Control', 'Shift' }, '#' .. i + 9, function()
-      if client.focus then
-        local tag = client.focus.screen.tags[i]
+      end, { description = 'view tag #' .. i, group = 'tag' }),
+      -- Toggle tag display.
+      awful.key({ super, 'Control' }, '#' .. i + 9, function()
+        local screen = awful.screen.focused()
+        local tag = screen.tags[i]
         if tag then
-          client.focus:toggle_tag(tag)
+          awful.tag.viewtoggle(tag)
         end
-      end
-    end, { description = 'toggle focused client on tag #' .. i, group = 'tag' })
-  )
+      end, { description = 'toggle tag #' .. i, group = 'tag' }),
+      -- Move client to tag.
+      awful.key({ super, 'Shift' }, '#' .. i + 9, function()
+        if client.focus then
+          local tag = client.focus.screen.tags[i]
+          if tag then
+            client.focus:move_to_tag(tag)
+          end
+        end
+      end, { description = 'move focused client to tag #' .. i, group = 'tag' }),
+      -- Toggle tag on focused client.
+      awful.key({ super, 'Control', 'Shift' }, '#' .. i + 9, function()
+        if client.focus then
+          local tag = client.focus.screen.tags[i]
+          if tag then
+            client.focus:toggle_tag(tag)
+          end
+        end
+      end, { description = 'toggle focused client on tag #' .. i, group = 'tag' })
+    )
+  end
 end
 
-clientbuttons = mytable.join(
-  awful.button({}, 1, function(c)
-    c:emit_signal('request::activate', 'mouse_click', { raise = true })
-  end),
-  awful.button({ super }, 1, function(c)
-    c:emit_signal('request::activate', 'mouse_click', { raise = true })
-    awful.mouse.client.move(c)
-  end),
-  awful.button({ super }, 3, function(c)
-    c:emit_signal('request::activate', 'mouse_click', { raise = true })
-    awful.mouse.client.resize(c)
-  end)
-)
+M.set = function()
+  -- {{{ Mouse bindings
+  --
+  clientbuttons = M.clientbuttons
+  clientkeys = M.client
+  globalkeys = M.global
+  build_global_tag_navigation()
 
--- Set keys
-root.keys(globalkeys)
+  root.buttons(mytable.join(
+    awful.button({}, 3, function()
+      awful.util.mymainmenu:toggle()
+    end),
+    awful.button({}, 4, awful.tag.viewnext),
+    awful.button({}, 5, awful.tag.viewprev)
+  ))
 
--- }}}
+  root.keys(M.global)
+end
+
+return M
