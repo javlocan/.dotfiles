@@ -32,7 +32,7 @@ M.set_theme = function()
   awful.util.tagnames = { '1', '2', '3', '4', '5' }
 
   -- beautiful.init(c.misc.theme_dir .. '/init.lua')
-  beautiful.init(const.misc.conf_dir .. '/theme.lua')
+  beautiful.init(const.misc.conf_dir .. '/confy/theme.lua')
   -- beautiful.init '/home/javlocan/.config/awesome/theme.lua'
 
   awful.screen.connect_for_each_screen(function(s)
