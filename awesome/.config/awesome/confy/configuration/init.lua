@@ -4,7 +4,6 @@ local gears = require 'gears'
 
 local const = require 'confy.configuration.const'
 local start = require 'confy.configuration.start'
-local layout = require 'confy.configuration.layout'
 local keys = require 'confy.configuration.keys'
 local rules = require 'confy.configuration.rules'
 
@@ -13,7 +12,6 @@ local M = {}
 M.autostart = function()
   start:handle_awesome_errors()
   start:run_once()
-  layout:set()
   -- TODO: Maybe this set_whatev can be whatev:set instead
   -- they are not really starting things.
   -- They should be run in another funcion(s)
@@ -32,7 +30,7 @@ M.set_theme = function()
   awful.util.tagnames = { '1', '2', '3', '4', '5' }
 
   -- beautiful.init(c.misc.theme_dir .. '/init.lua')
-  beautiful.init(const.misc.conf_dir .. '/confy/theme.lua')
+  beautiful.init(const.misc.conf_dir .. '/confy/theme/theme.lua')
   -- beautiful.init '/home/javlocan/.config/awesome/theme.lua'
 
   awful.screen.connect_for_each_screen(function(s)
