@@ -81,6 +81,7 @@ M.autostart_cmd_list = {
   'picom --no-frame-pacing --config ' .. M.misc.conf_dir .. '/picom.conf',
   'xclipd',
   'setxkbmap custom',
+  'alacritty',
 }
 
 return M

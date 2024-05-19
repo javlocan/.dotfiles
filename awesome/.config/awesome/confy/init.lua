@@ -4,13 +4,13 @@ local screen = screen
 local client = client
 
 local confy = require 'confy.configuration'
+local clients = require 'confy.clients'
+local global = require 'confy.global'
 local layout = require 'confy.layout'
-local keys = require 'confy.keys'
-local rules = require 'confy.rules'
 local theme = require 'confy.theme'
+local signals = require 'confy.signals'
 
 confy:autostart()
-confy:extend_globals()
 
 -- TODO:
 -- local taglist_buttons, taglist_keys = taglist:build()
@@ -22,17 +22,18 @@ confy:extend_globals()
 -- to refactor as window,screen,client,display,monitor,whatev
 -- rules is probably inside screen or client module
 -- CANT NAME THEM THAT THOUGH
+-- FIX: confy puede tener keys buttons, cosas custom dentro
+--    PERO PERO PERO PEROOO
+--    el resto en su sitio
 
-root.set:keys(confy.keys.global)
-root.set:buttons { confy.buttons.global }
+confy.set:keys(confy.keys.global)
+confy.set:buttons { confy.buttons.global }
+-- global:set_up { confy.keys.global, confy.buttons.global }
+-- confy.set:rules { confy.keys.client, confy.buttons.client }
+clients:set_up { confy.keys.client, confy.buttons.client }
 
-clientbuttons = confy.buttons.client
-clientkeys = confy.keys.client
-
-rules:set()
 layout:set()
 
 theme:set()
 
-confy:set_signals()
--- awesome:connect()
+signals:connect()

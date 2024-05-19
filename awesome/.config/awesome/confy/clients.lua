@@ -3,7 +3,7 @@ local beautiful = require 'beautiful'
 
 local M = {}
 
-M.set = function(clientkeys, clientbuttons)
+local set_rules = function(clientkeys, clientbuttons)
   -- {{{ Rules
   -- Rules to apply to new clients (through the "manage" signal).
   -- All clients will match this rule.
@@ -67,6 +67,10 @@ M.set = function(clientkeys, clientbuttons)
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
   }
+end
+
+M.set_up = function(_, clientkeys, clientbuttons)
+  set_rules(clientkeys, clientbuttons)
 end
 
 return M
