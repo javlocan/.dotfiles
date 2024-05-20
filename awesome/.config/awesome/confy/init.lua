@@ -10,7 +10,7 @@ local screens = require 'confy.screens'
 local theme = require 'confy.theme'
 local signals = require 'confy.signals'
 -----------------------------------------------------------------------
----   awesomewm defines a global context which includes this variables
+---  awesomewm defines a global context which includes this variables
 ---@diagnostic disable-next-line: undefined-global, unused-local
 local awesome, root, screen, client = awesome, root, screen, client
 -----------------------------------------------------------------------
