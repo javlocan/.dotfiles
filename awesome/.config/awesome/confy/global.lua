@@ -2,9 +2,11 @@ local awful = require 'awful'
 local gears = require 'gears'
 
 local const = require 'confy.configuration.const'
+local keys = require 'confy.configuration.keys'
+local buttons = require 'confy.configuration.buttons'
 
+local k = keys.keyboard
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
-local k = const.keys
 
 local M = {}
 
@@ -54,8 +56,8 @@ end
 M.set = function(_, args)
   awful.util.terminal = const.misc.terminal
 
-  local keys = args.keys or const.keys.global
-  local buttons = args.buttons or const.buttons.global
+  local keys = args.keys or keys.global
+  local buttons = args.buttons or buttons.global
 
   keys = build_global_tag_navigation(keys)
 

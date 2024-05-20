@@ -1,6 +1,9 @@
 local awful = require 'awful'
 local beautiful = require 'beautiful'
 
+local keys = require 'confy.configuration.keys'
+local buttons = require 'confy.configuration.buttons'
+
 local M = {}
 
 local set_rules = function(clientkeys, clientbuttons)
@@ -69,7 +72,9 @@ local set_rules = function(clientkeys, clientbuttons)
   }
 end
 
-M.set = function(_, clientkeys, clientbuttons)
+M.set = function(_, args)
+  local clientkeys = args.clientkeys or keys.client
+  local clientbuttons = args.buttons or buttons.client
   set_rules(clientkeys, clientbuttons)
 end
 

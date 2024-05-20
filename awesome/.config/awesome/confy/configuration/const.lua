@@ -2,6 +2,8 @@ local gears = require 'gears'
 local awful = require 'awful'
 local lain = require 'lain'
 
+-- TODO: Take all this from .toml with build_from_toml() fn
+
 local M = {}
 
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
@@ -9,12 +11,6 @@ local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 local home = os.getenv 'HOME'
 local config = home .. '/.config/awesome'
 local confy = config .. '/confy'
-
--- TODO: THIS FILE IS CENTRAL
--- Maybe will take all this from .toml with build_from_toml() fn
-
-M.keys = {}
-M.keys.global = {}
 
 M.dir = {
   config = config,
@@ -26,7 +22,6 @@ M.file = {
   styles = M.dir.theme .. '/styles.lua',
 }
 
--- TODO: To use in theme/init.lua
 M.theme = {
   bar = true,
   menu = true,
@@ -42,17 +37,6 @@ M.misc = {
   terminal = 'alacritty',
   browser = 'firefox',
   editor = os.getenv 'EDITOR' or 'nvim',
-}
-
-M.keys = {
-  super = 'Mod4',
-  alt = 'Mod1',
-  ctrl = 'Control',
-  shift = 'Shift',
-  left = 'h',
-  down = 'j',
-  up = 'k',
-  right = 'l',
 }
 
 M.layout_list = {

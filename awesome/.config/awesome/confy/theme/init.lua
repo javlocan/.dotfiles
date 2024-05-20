@@ -14,6 +14,7 @@ M.set = function(_, opts)
 
   beautiful.init(const.file.styles)
 
+  -- TODO: FIX
   -- FIX: This is not properly implemented
   bar.on = opts and opts.bar ~= nil and opts.bar
   wallpaper.on = opts and opts.wallpaper or true

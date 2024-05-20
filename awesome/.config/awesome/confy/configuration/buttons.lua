@@ -1,9 +1,9 @@
 local awful = require 'awful'
 local gears = require 'gears'
 
-local const = require 'confy.configuration.const'
+local keys = require 'confy.configuration.keys'
 
-local k = const.keys
+local k = keys.keyboard
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local M = {}
