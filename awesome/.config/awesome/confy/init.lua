@@ -21,9 +21,9 @@ local awesome, root = awesome, root
 confy:autostart()
 
 screens:set() -- se va pa screen
-theme:set()
+theme:set { bar = true }
 
-global:set(confy.keys.global, confy.buttons.global)
+global:set { keys = confy.keys.global, buttons = confy.buttons.global }
 clients:set(confy.keys.client, confy.buttons.client)
 
 -- TODO:
