@@ -44,32 +44,6 @@ M.run_once = function()
 end
 
 local mytable = c.misc.mytable
-local k = c.keys
-
-M.set_taglist = function()
-  awful.util.taglist_buttons = mytable.join(
-    awful.button({}, 1, function(t)
-      t:view_only()
-    end),
-    awful.button({ k.super }, 1, function(t)
-      if client.focus then
-        client.focus:move_to_tag(t)
-      end
-    end),
-    awful.button({}, 3, awful.tag.viewtoggle),
-    awful.button({ k.super }, 3, function(t)
-      if client.focus then
-        client.focus:toggle_tag(t)
-      end
-    end),
-    awful.button({}, 4, function(t)
-      awful.tag.viewnext(t.screen)
-    end),
-    awful.button({}, 5, function(t)
-      awful.tag.viewprev(t.screen)
-    end)
-  )
-end
 
 M.set_tasklist = function()
   awful.util.tasklist_buttons = mytable.join(

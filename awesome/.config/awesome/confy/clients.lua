@@ -69,7 +69,7 @@ local set_rules = function(clientkeys, clientbuttons)
   }
 end
 
-M.set_up = function(_, clientkeys, clientbuttons)
+M.set = function(_, clientkeys, clientbuttons)
   set_rules(clientkeys, clientbuttons)
 end
 

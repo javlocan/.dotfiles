@@ -1,7 +1,11 @@
+-- confy reexports some variables with the pourpose in mind
+-- of making dependencies transparent
+
 local confy = require 'confy.configuration'
+
 local clients = require 'confy.clients'
 local global = require 'confy.global'
-local layout = require 'confy.layout'
+local screens = require 'confy.screens'
 local theme = require 'confy.theme'
 local signals = require 'confy.signals'
 
@@ -16,11 +20,11 @@ local awesome, root = awesome, root
 
 confy:autostart()
 
-layout:set() -- se va pa screen
+screens:set() -- se va pa screen
 theme:set()
 
-global:set_up(confy.keys.global, confy.buttons.global)
-clients:set_up(confy.keys.client, confy.buttons.client)
+global:set(confy.keys.global, confy.buttons.global)
+clients:set(confy.keys.client, confy.buttons.client)
 
 -- TODO:
 -- local taglist_buttons, taglist_keys = taglist:build()

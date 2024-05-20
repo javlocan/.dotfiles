@@ -30,6 +30,7 @@ M.file = {
 M.theme = {
   bar = true,
   menu = true,
+  wallpaper = true,
 }
 
 M.misc = {

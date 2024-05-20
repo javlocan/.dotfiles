@@ -27,28 +27,6 @@ local cycle_prev = true -- cycle with only the previously focused client or all 
 
 local M = {}
 
-M.clientbuttons = mytable.join(
-  awful.button({}, 1, function(c)
-    c:emit_signal('request::activate', 'mouse_click', { raise = true })
-  end),
-  awful.button({ super }, 1, function(c)
-    c:emit_signal('request::activate', 'mouse_click', { raise = true })
-    awful.mouse.client.move(c)
-  end),
-  awful.button({ super }, 3, function(c)
-    c:emit_signal('request::activate', 'mouse_click', { raise = true })
-    awful.mouse.client.resize(c)
-  end)
-)
-
-M.globalbuttons = mytable.join(
-  awful.button({}, 3, function()
-    awful.util.mymainmenu:toggle()
-  end),
-  awful.button({}, 4, awful.tag.viewnext),
-  awful.button({}, 5, awful.tag.viewprev)
-)
-
 M.client = mytable.join(
   awful.key({ alt, 'Shift' }, 'm', lain.util.magnify_client, { description = 'magnify client', group = 'client' }),
   awful.key({ super }, 'f', function(c)
