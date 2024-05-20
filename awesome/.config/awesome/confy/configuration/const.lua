@@ -77,8 +77,10 @@ M.layout_list = {
 }
 
 M.autostart_cmd_list = {
-  'redshift -l 38:-5',
-  'picom --no-frame-pacing --config ' .. M.misc.conf_dir .. '/picom.conf',
+  -- 'redshift -l 38:-5',
+  'picom --no-frame-pacing --config '
+    .. M.misc.conf_dir
+    .. '/picom.conf',
   'xclipd',
   'setxkbmap custom',
   'alacritty',

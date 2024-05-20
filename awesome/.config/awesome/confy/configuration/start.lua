@@ -6,7 +6,7 @@ local c = require 'confy.configuration.const'
 
 local M = {}
 
-M.handle_awesome_errors = function()
+M.set_error_notification_handler = function()
   if awesome.startup_errors then
     naughty.notify {
       preset = naughty.config.presets.critical,

@@ -3,7 +3,8 @@ local start = require 'confy.configuration.start'
 local M = {}
 
 M.autostart = function()
-  start:handle_awesome_errors()
+  G = {}
+  start:set_error_notification_handler()
   start:run_once()
   -- TODO: Maybe this set_whatev can be whatev:set instead
   -- they are not really starting things.

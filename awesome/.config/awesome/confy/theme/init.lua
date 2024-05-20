@@ -21,6 +21,8 @@ M.set = function()
   awful.screen.connect_for_each_screen(function(s)
     wallpaper:set(s)
     bar:set(s)
+
+    -- TODO: repartir escritorios del 1 al 0 entre 2 screens
     awful.tag({ '1', '2', '3', '4', '5' }, s, awful.layout.layouts[1])
   end)
 end
