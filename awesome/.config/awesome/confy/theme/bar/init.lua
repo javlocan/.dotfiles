@@ -28,15 +28,15 @@ local bar = function(_, s)
         layout = wibox.layout.align.horizontal,
         {
           layout = wibox.layout.align.horizontal,
+          s.tray,
           taglist(s),
           s.promptbox,
         },
         nil,
         {
           layout = wibox.layout.align.horizontal,
-          -- layoutbox(s),
           clock,
-          s.tray,
+          layoutbox(s),
         },
       },
       {
