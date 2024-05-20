@@ -6,6 +6,9 @@ local const = require 'confy.configuration.const'
 
 local M = {}
 
+--- TODO: Signals puede desaparecer
+--- solo con poner cada cosa en su sitio
+--- clients screens o lo k sea, las funciones al menos
 M.connect = function()
   -- Enable sloppy focus, so that focus follows mouse.
   client.connect_signal('mouse::enter', function(c)
@@ -23,9 +26,9 @@ M.connect = function()
   end)
 
   client.connect_signal('manage', function(c)
-    c.shape = function(cr, w, h)
-      gears.shape.rounded_rect(cr, w, h, 6)
-    end
+    -- c.shape = function(cr, w, h)
+    --   gears.shape.rounded_rect(cr, w, h, 6)
+    -- end
 
     if not awesome.startup then
       awful.client.setslave(c)
