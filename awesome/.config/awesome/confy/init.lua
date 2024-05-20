@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------
------- ░█▀▀▀ ░█▄─░█ 　 ░█▀▄▀█ ─█▀▀█ ▀█▀ ░█▄─░█ ▄▀ ▀▄
------- ░█▀▀▀ ░█░█░█ 　 ░█░█░█ ░█▄▄█ ░█─ ░█░█░█ █─ ─█
------- ░█─── ░█──▀█ 　 ░█──░█ ░█─░█ ▄█▄ ░█──▀█ ▀▄ ▄▀-
+---------- ░█▀▀▀ ░█▄─░█ -- ░█▀▄▀█  █▀▀█ ▀█▀ ░█▄ ░█ ▄▀ ▀▄ --------------
+---------- ░█▀▀▀ ░█░█░█ -- ░█░█░█ ░█▄▄█ ░█  ░█░█░█ █   █ --------------
+---------- ░█ -- ░█- ▀█ -- ░█- ░█ ░█ ░█ ▄█▄ ░█- ▀█ ▀▄ ▄▀ --------------
 -----------------------------------------------------------------------
 local confy = require 'confy.configuration'
 local clients = require 'confy.clients'
@@ -16,7 +16,7 @@ local awesome, root, screen, client = awesome, root, screen, client
 -----------------------------------------------------------------------
 ---  confy functions as a re-export barrel for the purpose of
 ---  1. making dependency flow more transparent between modules
----  2. turning this file into a relevant one for quick tinkerings
+---  2. exposing quick tinkering possibilities through fast gds
 -----------------------------------------------------------------------
 confy:autostart()
 screens:set() -- se va pa screen
