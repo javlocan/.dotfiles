@@ -53,16 +53,18 @@ local build_global_tag_navigation = function(tbl)
   return tbl
 end
 
+---@param _ _self
+---@param args { keys: keys, buttons: buttons }
 M.set = function(_, args)
   awful.util.terminal = const.misc.terminal
 
-  local keys = args.keys or keys.global
-  local buttons = args.buttons or buttons.global
+  local globalkeys = args.keys or keys.global
+  local globalbuttons = args.buttons or buttons.global
 
-  keys = build_global_tag_navigation(keys)
+  globalkeys = build_global_tag_navigation(globalkeys)
 
-  root.keys = keys
-  root.buttons = buttons
+  root.keys = globalkeys
+  root.buttons = globalbuttons
 end
 
 return M

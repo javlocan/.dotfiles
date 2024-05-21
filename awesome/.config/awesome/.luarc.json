@@ -1,0 +1,21 @@
+{
+    "description": "Awesomewm setting of sumneko.lua",
+    "diagnostics": {
+        "enable": true,
+        "globals": [
+            "awesome",
+            "awful",
+            "client",
+            "screen",
+            "tag"
+        ]
+    },
+    "workspace": {
+        "library": [
+            "/usr/share/awesome",
+            "/usr/share/awesome/lib",
+        ],
+        "maxPreload": 2000,
+        "preloadFileSize": 1000
+    }
+}

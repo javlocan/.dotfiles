@@ -3,7 +3,7 @@
 ---------- ░█▀▀▀ ░█░█░█ -- ░█░█░█ ░█▄▄█ ░█  ░█░█░█ █   █ --------------
 ---------- ░█ -- ░█- ▀█ -- ░█- ░█ ░█ ░█ ▄█▄ ░█- ▀█ ▀▄ ▄▀ --------------
 -----------------------------------------------------------------------
----  This project is build on top of awesome-copycats, thanks yall  ---
+---  The project is built on top of awesome-copycats, thanks y'all  ---
 -----------------------------------------------------------------------
 local confy = require 'confy.configuration'
 local clients = require 'confy.clients'
@@ -20,9 +20,10 @@ local awesome, root, screen, client = awesome, root, screen, client
 ---  1. dependency flow and interactions transparent between modules
 ---  2. quick tinkering possible through this file with vim gd and +
 -----------------------------------------------------------------------
-confy:autostart()
+confy:autostart { autorun = true }
 screens:set()
-theme:set { bar = true, menu = true }
+theme:load { keys = confy.keys.global, buttons = confy.buttons.global }
+theme:set { bar = true, menu = true, wallpaper = true }
 global:set { keys = confy.keys.global, buttons = confy.buttons.global }
 clients:set { keys = confy.keys.client, buttons = confy.buttons.client }
 

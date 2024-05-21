@@ -72,8 +72,10 @@ local set_rules = function(clientkeys, clientbuttons)
   }
 end
 
+---@param _ _self
+---@param args { keys: keys, buttons: buttons }
 M.set = function(_, args)
-  local clientkeys = args.clientkeys or keys.client
+  local clientkeys = args.keys or keys.client
   local clientbuttons = args.buttons or buttons.client
   set_rules(clientkeys, clientbuttons)
 end
