@@ -16,8 +16,8 @@ styles.bg_normal = '#222222'
 styles.bg_focus = '#1E2320'
 styles.bg_urgent = '#3F3F3F'
 
-styles.useless_gap = 3
-styles.border_width = dpi(3)
+styles.useless_gap = dpi(2)
+styles.border_width = dpi(2)
 styles.border_normal = '#3F3F3F'
 styles.border_focus = '#6F6F6F'
 styles.border_marked = '#CC9393'
@@ -100,8 +100,8 @@ styles.titlebar_maximized_button_focus_inactive = styles.dir .. '/icons/titlebar
 styles.titlebar_maximized_button_normal_inactive = styles.dir .. '/icons/titlebar/maximized_normal_inactive.png'
 
 styles.notification_font = 'mono 11'
-styles.notification_bg = styles.bg_focus
-styles.notification_fg = styles.fg_focus
+styles.notification_bg = styles.bg_normal
+styles.notification_fg = styles.fg_normal
 styles.notification_border_width = styles.border_width
 styles.notification_border_color = styles.border_normal
 -- theme.notification_shape
