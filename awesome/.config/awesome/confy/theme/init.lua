@@ -9,6 +9,13 @@ local bar = require 'confy.theme.bar'
 
 local M = {}
 
+---@class ThemeOptions
+---@field bar? boolean Load bar on each screen
+---@field menu? boolean Makes menu accesible (Super+W)
+---@field wallpaper? boolean Loads a wallpaper for both screens
+
+---@param _ any
+---@param opts? ThemeOptions
 M.set = function(_, opts)
   awful.util.tagnames = { '1', '2', '3', '4', '5' }
 

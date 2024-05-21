@@ -3,6 +3,8 @@
 ---------- ░█▀▀▀ ░█░█░█ -- ░█░█░█ ░█▄▄█ ░█  ░█░█░█ █   █ --------------
 ---------- ░█ -- ░█- ▀█ -- ░█- ░█ ░█ ░█ ▄█▄ ░█- ▀█ ▀▄ ▄▀ --------------
 -----------------------------------------------------------------------
+---  This project is build on top of awesome-copycats, thanks yall  ---
+-----------------------------------------------------------------------
 local confy = require 'confy.configuration'
 local clients = require 'confy.clients'
 local global = require 'confy.global'
@@ -14,12 +16,12 @@ local signals = require 'confy.signals'
 ---@diagnostic disable-next-line: undefined-global, unused-local
 local awesome, root, screen, client = awesome, root, screen, client
 -----------------------------------------------------------------------
----  confy functions as a re-export barrel for the purpose of
----  1. making dependency flow more transparent between modules
----  2. exposing quick tinkering possibilities through fast gds
+---  confy functions as a re-export barrel for the purpose of making
+---  1. dependency flow and interactions transparent between modules
+---  2. quick tinkering possible through this file with vim gd and +
 -----------------------------------------------------------------------
 confy:autostart()
-screens:set() -- se va pa screen
+screens:set()
 theme:set { bar = true, menu = true }
 global:set { keys = confy.keys.global, buttons = confy.buttons.global }
 clients:set { keys = confy.keys.client, buttons = confy.buttons.client }
@@ -30,6 +32,6 @@ clients:set { keys = confy.keys.client, buttons = confy.buttons.client }
 -- sumtin like that
 
 signals:connect()
-
 -----------------------------------------------------------------------
 --- * this concept reminds me of frontendy-ux's-stuff more than others
+-----------------------------------------------------------------------

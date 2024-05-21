@@ -7,8 +7,6 @@ local M = {}
 M.autostart = function()
   start:set_error_notification_handler()
   start:run_once()
-
-  G = {}
 end
 
 M.keys = {
