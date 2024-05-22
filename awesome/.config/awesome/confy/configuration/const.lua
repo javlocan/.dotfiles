@@ -14,6 +14,7 @@ local confy = config .. '/confy'
 
 M.dir = {
   config = config,
+  screenshots = home .. '/Pictures/',
   theme = confy .. '/theme',
   assets = confy .. '/theme/assets',
 }

@@ -30,6 +30,9 @@ end
 ---@field global keys global keybindings
 ---@field keyboard keys key definitions (mods,hjkl)
 
+-- FIX: THIS IS ALL WRONG
+-- TODO: awful.keyboard exposes methods for handling keys
+
 ---@type keybindings client and global keybindings and key definitions
 M.keys = {
   ---@type keys define client keys
