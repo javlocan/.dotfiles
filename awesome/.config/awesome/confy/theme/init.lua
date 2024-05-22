@@ -20,6 +20,7 @@ M.loaded = false
 ---# for it to work must be done before keys or theme are set!
 M.load = function(_, args)
   ---@protected
+  ---@meta
   M.keys = args and args.keys or keys.global
   ---@protected
   M.buttons = args and args.buttons or buttons.global

@@ -30,6 +30,7 @@ M.keyboard = {
 
 local k = M.keyboard
 
+---@type list List of client keybindings
 M.client = mytable.join(
   awful.key({ k.alt, 'Shift' }, 'm', lain.util.magnify_client, { description = 'magnify client', group = 'client' }),
   awful.key({ k.super }, 'f', function(c)
