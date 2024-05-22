@@ -55,11 +55,11 @@ end
 awful.util.terminal = const.misc.terminal
 M.bind_keys = function()
   local tag_navigation_key_bindings = build_global_tag_navigation()
-  awful.keyboard.append_global_keybindings(tag_navigation_key_bindings)
+  awful.keyboard.append_global_keybinding(tag_navigation_key_bindings)
 end
 
 M.bind_buttons = function()
-  awful.keyboard.append_global_keybindings {
+  awful.mouse.append_global_mousebindings {
     awful.button({}, 1, function(t)
       t:view_only()
     end),

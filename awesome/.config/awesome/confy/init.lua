@@ -7,7 +7,7 @@
 ----------------------------------------------------------------------------
 local confy = require 'confy.configuration'
 local clients = require 'confy.clients'
-local global = require 'confy.global'
+local tags = require 'confy.tags'
 local screens = require 'confy.screens'
 local theme = require 'confy.theme'
 local signals = require 'confy.signals'
@@ -29,8 +29,11 @@ theme:load { keys = confy.keys.global, buttons = confy.buttons.global }
 theme:set { bar = true, menu = true, wallpaper = true }
 
 require 'test'
+require('awful.keyboard').append_global_keybinding(confy.keys.global)
 
-global:set { keys = confy.keys.global, buttons = confy.buttons.global }
+tags:bind_keys()
+tags:bind_buttons()
+-- global:set { keys = confy.keys.global, buttons = confy.buttons.global }
 clients:set { keys = confy.keys.client, buttons = confy.buttons.client }
 
 -- TODO:
