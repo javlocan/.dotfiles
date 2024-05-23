@@ -53,10 +53,12 @@ local build_global_tag_navigation = function()
 end
 
 awful.util.terminal = const.misc.terminal
-M.bind_keys = client.connect_signal('request::default_keybindings', function()
-  local tag_navigation_key_bindings = build_global_tag_navigation()
-  awful.keyboard.append_global_keybinding(tag_navigation_key_bindings)
-end)
+M.bind_keys = function()
+  client.connect_signal('request::default_keybindings', function()
+    local tag_navigation_key_bindings = build_global_tag_navigation()
+    awful.keyboard.append_global_keybinding(tag_navigation_key_bindings)
+  end)
+end
 
 M.bind_buttons = function()
   awful.mouse.append_global_mousebindings {

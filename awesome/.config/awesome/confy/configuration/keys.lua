@@ -30,7 +30,6 @@ M.keyboard = {
 
 local k = M.keyboard
 
----@type list List of client keybindings
 M.client = mytable.join(
   awful.key({ k.alt, 'Shift' }, 'm', lain.util.magnify_client, { description = 'magnify client', group = 'client' }),
   awful.key({ k.super }, 'f', function(c)
@@ -44,9 +43,12 @@ M.client = mytable.join(
   awful.key({ k.super, 'Control' }, 'Return', function(c)
     c:swap(awful.client.getmaster())
   end, { description = 'move to master', group = 'client' }),
-  awful.key({ k.super, 'Shift' }, 'o', function(c)
+  awful.key({ k.super, k.ctrl }, 'l', function(c)
     c:move_to_screen()
-  end, { description = 'move to screen', group = 'client' }),
+  end, { description = 'move to left screen', group = 'client' }),
+  awful.key({ k.super, k.ctrl }, 'h', function(c)
+    c:move_to_screen()
+  end, { description = 'move to right screen', group = 'client' }),
   awful.key({ k.super }, 't', function(c)
     c.ontop = not c.ontop
   end, { description = 'toggle keep on top', group = 'client' }),
@@ -154,12 +156,12 @@ M.global = mytable.join(
   awful.key({ k.super, 'Shift' }, 'k', function()
     awful.client.swap.byidx(-1)
   end, { description = 'swap with previous client by index', group = 'client' }),
-  awful.key({ k.super, 'Control' }, 'j', function()
-    awful.screen.focus_relative(1)
-  end, { description = 'focus the next screen', group = 'screen' }),
-  awful.key({ k.super, 'Control' }, 'k', function()
-    awful.screen.focus_relative(-1)
-  end, { description = 'focus the previous screen', group = 'screen' }),
+  -- awful.key({ k.super, 'Control' }, 'j', function()
+  --   awful.screen.focus_relative(1)
+  -- end, { description = 'focus the next screen', group = 'screen' }),
+  -- awful.key({ k.super, 'Control' }, 'k', function()
+  --   awful.screen.focus_relative(-1)
+  -- end, { description = 'focus the previous screen', group = 'screen' }),
   awful.key({ k.super }, 'u', awful.client.urgent.jumpto, { description = 'jump to urgent client', group = 'client' }),
   awful.key({ k.super }, 'Tab', function()
     if cycle_only_prev then
@@ -226,12 +228,12 @@ M.global = mytable.join(
   awful.key({ k.super, 'Shift' }, 'l', function()
     awful.tag.incnmaster(-1, nil, true)
   end, { description = 'decrease the number of master clients', group = 'layout' }),
-  awful.key({ k.super, 'Control' }, 'h', function()
-    awful.tag.incncol(1, nil, true)
-  end, { description = 'increase the number of columns', group = 'layout' }),
-  awful.key({ k.super, 'Control' }, 'l', function()
-    awful.tag.incncol(-1, nil, true)
-  end, { description = 'decrease the number of columns', group = 'layout' }),
+  -- awful.key({ k.super, 'Control' }, 'h', function()
+  --   awful.tag.incncol(1, nil, true)
+  -- end, { description = 'increase the number of columns', group = 'layout' }),
+  -- awful.key({ k.super, 'Control' }, 'l', function()
+  --   awful.tag.incncol(-1, nil, true)
+  -- end, { description = 'decrease the number of columns', group = 'layout' }),
   awful.key({ k.super }, 'space', function()
     awful.layout.inc(1)
   end, { description = 'select next', group = 'layout' }),
